@@ -39,3 +39,4 @@ C:\Dev\Repos\ControllWeb\bin\Controll.Common.pdb
 C:\Dev\Repos\ControllWeb\bin\Ninject.xml
 C:\Dev\Repos\ControllWeb\bin\NHibernate.xml
 C:\Dev\Repos\ControllWeb\bin\Microsoft.Owin.Hosting.xml
+C:\Dev\Repos\ControllWeb\bin\Content\js\SignalR\jquery-1.6.4.min.js

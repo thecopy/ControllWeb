@@ -3,3 +3,32 @@
     
 }
 Hello View!
+<script type="text/javascript">
+
+    $.connection.hub.logging = true;
+
+    var myHub = $.connection.zombieHub;
+    myHub.state.someState = "SomeValue";
+
+    function connectionReady() {
+        console.log("Done calling first hub serverside-function");
+    };
+
+    myHub.client.SomeClientFunction = function () {
+        console.log("serverside called 'Clients.SomeClientFunction()'");
+    };
+
+    $.connection.hub.error(function () {
+        console.log("An error occured");
+    });
+
+    $.connection.hub.start()
+        .done(function () {
+            myHub.server.logOn("username", "password", "zombieName") //e.g. a login or init
+                .done(connectionReady);
+        })
+        .fail(function () {
+            console.log("Could not Connect!");
+        });
+
+</script>

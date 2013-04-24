@@ -7,6 +7,12 @@
         WriteLiteral(Bundle.Css().ForceDebug()
             .AddDirectory("~/Content/css/")
             .Render("~/Content/Controll_#.css"));
+            
+        WriteLiteral(Bundle.JavaScript().ForceDebug()
+            .Add("~/Content/js/SignalR/jquery-1.6.4.min.js")
+            .Add("~/Content/js/SignalR/jquery.signalR-1.0.1.min.js")
+            .Add("~/signalr/hubs")
+            .Render("~Content/Controll_#.js"));
     }
 
 </head>
@@ -15,7 +21,7 @@
         <div id="login">
             <div class="login-header">
                 <div class="banner" role="banner">
-                    <h1>Jabb</h1>
+                    <h1>Controll</h1>
                     <div class="jabbrLogo large-logo" id="logo"></div>
                     <div>
                         Powered by <a href="https://github.com/SignalR/SignalR" target="_blank">SignalR</a>

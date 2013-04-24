@@ -18,7 +18,11 @@ namespace ControllWeb
             CookieBasedSessions.Enable(pipelines);
             
             Controll.Hosting.Bootstrapper.StrapTheBoot();
-            RouteTable.Routes.MapHubs();
+            
+            RouteTable.Routes.MapHubs(new HubConfiguration
+                {
+                    Resolver = Controll.Hosting.Bootstrapper.NinjectDependencyResolver
+                });
         }
     }
 }
