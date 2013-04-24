@@ -10,7 +10,7 @@ namespace ControllWeb.Modules
     {
         public HomeModule()
         {
-            Get["/"] = _ => "Hello World!";
+            Get["/"] = _ => View["index"];
         }
     }
 }
