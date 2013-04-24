@@ -1,0 +1,7 @@
+C:\Dev\Repos\ControllWeb\bin\ControllWeb.dll
+C:\Dev\Repos\ControllWeb\bin\ControllWeb.pdb
+C:\Dev\Repos\ControllWeb\bin\Nancy.dll
+C:\Dev\Repos\ControllWeb\obj\Debug\ControllWeb.csprojResolveAssemblyReference.cache
+C:\Dev\Repos\ControllWeb\obj\Debug\ControllWeb.dll
+C:\Dev\Repos\ControllWeb\obj\Debug\ControllWeb.pdb
+C:\Dev\Repos\ControllWeb\bin\Nancy.Hosting.Aspnet.dll
