@@ -281,6 +281,11 @@ public void Execute(IPluginContext context)
                       That's it! If you would execute that activity with the parameter <code class="prettyprint">name = "foo"</code> you would be
                       returned "Hello foo!".
                   </p>
+                  <div class="alert alert-info">
+                      It is a good idea to create stateless plugins. If the caller isnt online when the response from the zombie is sent it is lost forever.
+                      (Persistent results are a planned feature though but not in the near future)
+                  </div>
+
                   <h4>Implement an intermidiate command</h4>
                   <div class="alert alert-info">
                     The current version of Controll have not yet implemented this type of command. It only exist like a prototype in developement.
