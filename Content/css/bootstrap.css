@@ -787,7 +787,7 @@ h4 small {
 
 .page-header {
   padding-bottom: 9px;
-  margin: 20px 0 30px;
+  margin: 50px 0 30px;
   border-bottom: 1px solid #eeeeee;
 }
 
@@ -952,6 +952,7 @@ address {
 code,
 pre {
   padding: 0 3px 2px;
+    padding-left: 1em;
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
   font-size: 12px;
   color: #333333;

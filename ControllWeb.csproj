@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\controll.css" />
     <Content Include="Content\css\flat-ui.css" />
     <Content Include="Content\fonts\Flat-UI-Icons-16.dev.svg" />
     <Content Include="Content\fonts\Flat-UI-Icons-16.svg" />
@@ -189,6 +190,37 @@
     <Content Include="Content\js\bootstrap-tooltip.js" />
     <Content Include="Content\js\custom_checkbox_and_radio.js" />
     <Content Include="Content\js\custom_radio.js" />
+    <Content Include="Content\js\google-code-prettify\lang-apollo.js" />
+    <Content Include="Content\js\google-code-prettify\lang-basic.js" />
+    <Content Include="Content\js\google-code-prettify\lang-clj.js" />
+    <Content Include="Content\js\google-code-prettify\lang-css.js" />
+    <Content Include="Content\js\google-code-prettify\lang-dart.js" />
+    <Content Include="Content\js\google-code-prettify\lang-erlang.js" />
+    <Content Include="Content\js\google-code-prettify\lang-go.js" />
+    <Content Include="Content\js\google-code-prettify\lang-hs.js" />
+    <Content Include="Content\js\google-code-prettify\lang-lisp.js" />
+    <Content Include="Content\js\google-code-prettify\lang-llvm.js" />
+    <Content Include="Content\js\google-code-prettify\lang-lua.js" />
+    <Content Include="Content\js\google-code-prettify\lang-matlab.js" />
+    <Content Include="Content\js\google-code-prettify\lang-ml.js" />
+    <Content Include="Content\js\google-code-prettify\lang-mumps.js" />
+    <Content Include="Content\js\google-code-prettify\lang-n.js" />
+    <Content Include="Content\js\google-code-prettify\lang-pascal.js" />
+    <Content Include="Content\js\google-code-prettify\lang-proto.js" />
+    <Content Include="Content\js\google-code-prettify\lang-r.js" />
+    <Content Include="Content\js\google-code-prettify\lang-rd.js" />
+    <Content Include="Content\js\google-code-prettify\lang-scala.js" />
+    <Content Include="Content\js\google-code-prettify\lang-sql.js" />
+    <Content Include="Content\js\google-code-prettify\lang-tcl.js" />
+    <Content Include="Content\js\google-code-prettify\lang-tex.js" />
+    <Content Include="Content\js\google-code-prettify\lang-vb.js" />
+    <Content Include="Content\js\google-code-prettify\lang-vhdl.js" />
+    <Content Include="Content\js\google-code-prettify\lang-wiki.js" />
+    <Content Include="Content\js\google-code-prettify\lang-xq.js" />
+    <Content Include="Content\js\google-code-prettify\lang-yaml.js" />
+    <Content Include="Content\js\google-code-prettify\prettify.css" />
+    <Content Include="Content\js\google-code-prettify\prettify.js" />
+    <Content Include="Content\js\google-code-prettify\run_prettify.js" />
     <Content Include="Content\js\html5shiv.js" />
     <Content Include="Content\js\icon-font-ie7.js" />
     <Content Include="Content\js\jquery-1.8.2.min.js" />
@@ -197,16 +229,11 @@
     <Content Include="Content\js\jquery.placeholder.js" />
     <Content Include="Content\js\jquery.tagsinput.js" />
     <Content Include="Content\js\lte-ie7-24.js" />
-    <None Include="Content\js\SignalR\jquery-1.6.4-vsdoc.js" />
-    <Content Include="Content\js\SignalR\jquery-1.6.4.js" />
-    <Content Include="Content\js\SignalR\jquery-1.6.4.min.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\js\SignalR\jquery.signalR-1.0.1.js" />
-    <Content Include="Content\js\SignalR\jquery.signalR-1.0.1.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modules\DocumentationModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="NancyBootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -214,13 +241,14 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Views\Home\index.cshtml" />
-    <Content Include="Views\Home\_layout.cshtml" />
+    <Content Include="Views\_layout.cshtml" />
     <Content Include="Content\fonts\Flat-UI-Icons-16.eot" />
     <Content Include="Content\fonts\Flat-UI-Icons-16.ttf" />
     <Content Include="Content\fonts\Flat-UI-Icons-16.woff" />
     <Content Include="Content\fonts\Flat-UI-Icons-24.eot" />
     <Content Include="Content\fonts\Flat-UI-Icons-24.ttf" />
     <Content Include="Content\fonts\Flat-UI-Icons-24.woff" />
+    <Content Include="Views\Documentation\index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
