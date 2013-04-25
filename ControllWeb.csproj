@@ -43,9 +43,6 @@
     <Reference Include="AjaxMin">
       <HintPath>packages\AjaxMin.4.48.4489.28432\lib\net20\AjaxMin.dll</HintPath>
     </Reference>
-    <Reference Include="Controll.Hosting">
-      <HintPath>..\controll\Controll.Hosting\bin\Debug\Controll.Hosting.dll</HintPath>
-    </Reference>
     <Reference Include="EcmaScript.NET">
       <HintPath>packages\YUICompressor.NET.2.0.0.0\lib\NET20\EcmaScript.NET.dll</HintPath>
     </Reference>

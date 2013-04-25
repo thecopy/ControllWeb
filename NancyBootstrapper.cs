@@ -17,12 +17,12 @@ namespace ControllWeb
         {
             CookieBasedSessions.Enable(pipelines);
             
-            Controll.Hosting.Bootstrapper.StrapTheBoot();
+            //Controll.Hosting.Bootstrapper.StrapTheBoot();
             
-            RouteTable.Routes.MapHubs(new HubConfiguration
-                {
-                    Resolver = Controll.Hosting.Bootstrapper.NinjectDependencyResolver
-                });
+            //RouteTable.Routes.MapHubs(new HubConfiguration
+            //    {
+            //        Resolver = Controll.Hosting.Bootstrapper.NinjectDependencyResolver
+            //    });
         }
     }
 }
