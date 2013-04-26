@@ -52,15 +52,6 @@
     <Reference Include="Iesi.Collections">
       <HintPath>packages\YUICompressor.NET.2.0.0.0\lib\NET20\Iesi.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.Core">
-      <HintPath>packages\Microsoft.AspNet.SignalR.Core.1.0.1\lib\net40\Microsoft.AspNet.SignalR.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.Owin">
-      <HintPath>packages\Microsoft.AspNet.SignalR.Owin.1.0.1\lib\net45\Microsoft.AspNet.SignalR.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb">
-      <HintPath>packages\Microsoft.AspNet.SignalR.SystemWeb.1.0.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin.Host.SystemWeb">
       <HintPath>packages\Microsoft.Owin.Host.SystemWeb.1.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
@@ -241,15 +232,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="Views\Home\index.cshtml" />
-    <Content Include="Views\_layout.cshtml" />
+    <Content Include="Views\Home\index.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\_layout.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\fonts\Flat-UI-Icons-16.eot" />
     <Content Include="Content\fonts\Flat-UI-Icons-16.ttf" />
     <Content Include="Content\fonts\Flat-UI-Icons-16.woff" />
     <Content Include="Content\fonts\Flat-UI-Icons-24.eot" />
     <Content Include="Content\fonts\Flat-UI-Icons-24.ttf" />
     <Content Include="Content\fonts\Flat-UI-Icons-24.woff" />
-    <Content Include="Views\Documentation\index.cshtml" />
+    <Content Include="Views\Documentation\index.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

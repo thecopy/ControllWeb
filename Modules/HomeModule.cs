@@ -10,7 +10,12 @@ namespace ControllWeb.Modules
     {
         public HomeModule()
         {
-            Get["/"] = _ => View["index"];
+            Get["/"] = _ =>
+                {
+                    var view = View["index"];
+                    
+                    return view;
+                };
         }
     }
 }
