@@ -1,0 +1,10 @@
+C:\Dev\Repos\ControllWeb\ControllWeb\obj\Debug\ControllWeb.csprojResolveAssemblyReference.cache
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\ControllWeb.dll
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\ControllWeb.pdb
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Nancy.dll
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Nancy.Hosting.Aspnet.dll
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Nancy.ViewEngines.Razor.dll
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\System.Web.Razor.Unofficial.dll
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\System.Web.Razor.Unofficial.pdb
+C:\Dev\Repos\ControllWeb\ControllWeb\obj\Debug\ControllWeb.dll
+C:\Dev\Repos\ControllWeb\ControllWeb\obj\Debug\ControllWeb.pdb
