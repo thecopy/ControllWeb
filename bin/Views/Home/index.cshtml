@@ -17,25 +17,9 @@
         <li>Lightweight</li>
         <li>Extendable and Versatile</li>
     </ul>
-        <p><a href="#learn-more" class="btn btn-primary btn-large">Learn more!</a></p>
-</div>
+    <div class="pull-left"><a href="#learn-more" class="btn btn-success btn-large">Download Controll Zombie (11kB)!</a></div>
 
-<section id="learn-more">
-    <div class="page-header">
-        <h1>How do i create a plugin?</h1>
-    </div>
-    <p>
-        Im happy that you wanted to learn more! To create a plugin, your class only have to 
-        extend <a href="#" class="label">Controll.Common.IControllPlugin</a>. And then write your code
-        in the <span class="label">Execute</span> method and bam - <strong>you're ready to go!</strong>
-    </p>
-    
-    <h2>Wow, that wasn't much at all!</h2>
-    <p>
-        Besides from copying your plugin to the folder and renaming it like 
-        <span class="label">anything.plugin.dll</span>: <strong>That's it!</strong>
-    </p>
-</section>
+</div>
 
 <section id="firewall">
     <div class="page-header">
@@ -47,6 +31,22 @@
     Oh, you don't know what a <strong>zombie</strong> is? My bad! A zombie is like a client to the Controll
     servers, but instead of telling plugins on <i>other devices</i> to run, <i>they</i> are the ones doing the actual execution!<br/>
     And because you have the Controll servers in which everything passes through: you don't have to worry about time consuming firewalls and routers.
+</section>
+
+<section>
+    <div class="page-header">
+        <h1>How do i create a plugin?</h1>
+    </div>
+    <p>
+        Im happy that you wanted to learn more! To create a plugin, your class only have to 
+        extend <code class="prettyprint">IActivity</code>. And then write your code
+        in the <code class="prettyprint">Execute</code> method and bam - <strong>you're ready to go!</strong>
+    </p>
+    
+    <h2>Wow, that wasn't much at all!</h2>
+    <p>
+        Besides adding <a href="@Url.Content("~/Documentation/#coding-plugins")">creating small view model</a> for it: <strong>That's it!</strong>
+    </p>
 </section>
 
 <section id="quick-start">

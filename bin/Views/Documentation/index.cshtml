@@ -1,39 +1,42 @@
 ﻿@{
     Layout = "_layout.cshtml";
 }
-      <div class="row-fluid" style="margin-top: 80px">
-        <div class="span3">
-          <div class="well nav sidebar-nav affix" style="width:180px">
+<div class="row-fluid" style="margin-top: 80px">
+    <div class="span3">
+        <div class="well affix" id="navbox">
             <ul class="nav nav-list">
-              <li class="active"><a href="#">Quick Start</a></li>
-              <li class="nav-header">Plugins</li>
-              <li><a href="#tiny-example">Tiny Example</a></li>
-              <li><a href="#">Concepts</a></li>
-              <li><a href="#concepts">Coding Plugins</a></li>
-              <li class="nav-header">Controll Serivce</li>
-              <li><a href="#">Deploying</a></li>
-              <li><a href="#">Communications Model</a></li>
-              <li class="nav-header">Reference</li>
-              <li><a href="#">IPluginContext</a></li>
-              <li><a href="#">IControllPlugin</a></li>
-              <li><a href="#">ParameterDescriptor</a></li>
-              <li class="nav-header">Legal stuff</li>
-              <li><a href="#">License</a></li> 
+                <li class="active"><a href="#">Quick Start</a></li>
+                <li class="nav-header">Plugins</li>
+                <li><a href="#tiny-example">Tiny Example</a></li>
+                <li><a href="#concepts">Concepts</a></li>
+                <li><a href="#coding-plugins">Coding Plugins</a></li>
+                <li><a href="#coding-plugins-fluent">Fluent Interface</a></li>
+                <li class="nav-header">Controll Serivce</li>
+                <li><a href="#deploying">Deploying</a></li>
+                <li><a href="#communications-model">Communications Model</a></li>
+                <li class="nav-header">Reference</li>
+                <li><a href="#reference-iactivity">IActivity</a></li>
+                <li><a href="#reference-iactivitycontext">IActivityContext</a></li>
+                <li><a href="#reference-activityviewmodel">ActivityViewModel</a></li>
+                <li><a href="#reference-activitycommandviewmodel">ActivityCommandViewModel</a></li>
+                <li><a href="#reference-parameterdescriptorviewmodel">ParameterDescriptorViewModel</a></li>
+                <li class="nav-header">Legal stuff</li>
+                <li><a href="#license">License</a></li>
             </ul>
-          </div>
+        </div>
             <!--/.well -->
         </div>
           <!--/span-->
           <div class="span9">
               <div class="hero-unit">
-                  <h1>Quick Start</h1>
+                  <h1 id="quick-start" >Quick Start</h1>
                   <p></p>
                   <ol>
                       <li>Download the <a href="#">zombie</a> (11 KB)</li>
                       <li>Download a simple <a href="#">SDK</a></li>
-                      <li>Write your plugin (<a href="@Url.Content("~/Help/TinyPluginExample")">Tiny Example</a>)</li>
+                      <li>Write your plugin (<a href="@Url.Content("~/Documentation/#tiny-example")">Tiny Example</a>)</li>
                       <li>Compile and copy your .dll-file to the zombie folder as <span class="label">anything.plugin.dll</span></li>
-                      <li><a href="@Url.Content("~/Account/Register")">Sign up</a> or <a href="#">deploy your own</a> Controll service</li>
+                      <li><a href="@Url.Content("~/Account/SignUp")">Sign up</a> or <a href="#">deploy your own</a> Controll service</li>
                       <li>Start your zombie executable and enter:<br />
 
                           <ul>
@@ -84,14 +87,15 @@
                   </div>
                   <!--/span-->
               </div>
-              <section id="plugins">
-                  <div class="page-header"><h1>Plugins</h1></div>
-                  <h2 id="tiny-example">Tiny Example</h2>
-                  <p>
-                      This is an example of a tiny working plugin which does nothing besides to sleep for 5 seconds before
-                      it finishes.
-                  </p>
-                  <pre class="prettyprint lang-java" style="padding-left: 1em">
+              <section >
+                  <div class="page-header" style="margin-bottom:-25px"><h1>Plugins</h1></div>
+                  <article id="tiny-example">
+                      <h2>Tiny Example</h2>
+                      <p>
+                          This is an example of a tiny working plugin which does nothing besides to sleep for 5 seconds before
+                          it finishes.
+                      </p>
+                      <pre class="prettyprint lang-java" style="padding-left: 1em">
 using System;
 using System.Threading;
 using Controll.Common;
@@ -117,78 +121,69 @@ public class SampleActivity : IControllPlugin
         };
 }
                   </pre>
-                  
-                  <div class="alert alert-info alert-block">
-                      <h4>Heads up!</h4>
-                      Although this plugin works fine by just invoking it since it doesnt use any parameters, if you want
-                      to have an awesome dynamically created interface for it, you will have to write a few more lines!
-                  </div>
-
-                  <h2 id="concepts">Concepts</h2>
-                  <div class="alert alert-block">
-                      <h4>Warning!</h4>
-                      Some of what which is described in this section have not yet been implemented! But you can help by
-                      <a href="@Url.Content("~/Contribute/")">contributing</a>!
-                  </div>
-                  <p>
-                      When coding a plugin there isn't really that much you'll have to know! You can do pretty much anything
-                      you would be able to do if you were writing your own stand alone application. The difference is that all
-                      the input and output from and to the user will be going through the Controll service. And for that you have
-                      some fundamental concepts to rely on.
-                  </p>
-                  <p>
-                      The method which gets executed when your plugin is invoked from the zombie is
-                      <code class="prettyprint">void IControllPlugin.Execute(IPluginContext)</code>. As you can see from the 
-                      method signature you have access to something called a <strong>plugin context</strong>. By using this context-object
-                      you can communicate with the caller before, during and after execution, and also send error messages. But the most
-                      important property of the context-object for sure is the parameter dictionary. This property will contain
-                      all the parameters passed to the plugin which will be needed for execution.
-                  </p>
-                  <h4>Can my plugin .dll contain many more than one plugin?</h4>
-                  <p>
-                      <strong>Yes!</strong> Think of it like this:<br/>
-                      The <span class="label">.dll-file</span> contains <span class="label">Activities</span> which contains <span class="label">Commands</span>. <br/>
-                      An analogy would be:<br/>
-                      The <span class="label">Namespace</span> contains <span class="label">Classes</span> which contains <span class="label">Methods</span>.
-                  </p>
-                  <p>
-                      There are two types of commands: Normal commands and <i>intermidiate commands</i>. We will get to that later, for now lets focus on normal stuff!
-                  </p>
-                  <h4>Normal Commands</h4>
-                  <p>
-                      All normal commands will be exposed to the Contoll serivce by the zombie when synchronizing it's plugin-list.
-                  </p>
-                  <p>
-                      Lets say you have an activity in your plugin named <i>HelloWorld</i> which have one command and it requires one parameter. It
-                      should be the callers name. How is this interfaced to the client? And how can you control it? Well, that is what a <b>Parameter
-                      Descriptor</b> is for!
-                  </p>
-                  <h4>The Parameter Descriptor</h4>
-                  <p>
-                      A Parameter Descriptor contains metadata for one of the parameters needed for a command to be executed. The metadata
-                      controlls if your parameter should be interfaced like a textbox, a dropdown or a checkbox. It also contains the label and
-                      a description (optional).
-                  </p>
-                  <p>So your parameter descriptors for the HelloWorld command would be just one with the properties:</p>
-                  <ul>
-                      <li>Label: "Name"</li>
-                      <li>Type: Textbox</li>
-                      <li>Description: "Please enter Your name"</li>
-                  </ul>
-                  <h4>Alright! What about them intermidiate commands?</h4>
-                  <p>
-                      The <i>intermidiate commands</i> are commands that are not exposed to the caller but are a kind of
-                      "return value" from another command. Lets use the simple <i>HelloWorld</i> command from above.
-                  </p>
-                  <p>What if you want to ask the caller, by his or her name, what year of time it is? You will want to return a list of
-                      possible values (spring, summer, autumn and winter) and let the caller choose from these. This is what <b>intermidiate commands</b>
-                      are for! And each of the values have their own metadata which contains information about them and which commands will be called
-                      when activated.
-                  </p>
-                  
-                  <h2>Coding Plugins</h2>
-                  <p>Let create our activity HelloWorld and learn by doing! First we start with the bare minimum:</p>
-                  <pre class="prettyprint lang-java">
+                  </article>
+                  <article id="concepts">
+                      <h2>Concepts</h2>
+                      <p>
+                          When coding a plugin there isn't really that much you'll have to know! You can do pretty much anything
+                          you would be able to do if you were writing your own stand alone application. The difference is that all
+                          the input and output from and to the user will be going through the Controll service. And for that you have
+                          some fundamental concepts to rely on.
+                      </p>
+                      <p>
+                          The method which gets executed when your plugin is invoked from the zombie is
+                          <code class="prettyprint">void IControllPlugin.Execute(IPluginContext)</code>. As you can see from the 
+                          method signature you have access to something called a <strong>plugin context</strong>. By using this context-object
+                          you can communicate with the caller before, during and after execution, and also send error messages. But the most
+                          important property of the context-object for sure is the parameter dictionary. This property will contain
+                          all the parameters passed to the plugin which will be needed for execution.
+                      </p>
+                      <h4>Can my plugin .dll contain many more than one plugin?</h4>
+                      <p>
+                          <strong>Yes!</strong> Think of it like this:<br/>
+                          The <span class="label">.dll-file</span> contains <span class="label">Activities</span> which contains <span class="label">Commands</span>. <br/>
+                          An analogy would be:<br/>
+                          The <span class="label">Namespace</span> contains <span class="label">Classes</span> which contains <span class="label">Methods</span>.
+                      </p>
+                      <p>
+                          There are two types of commands: Normal commands and <i>intermidiate commands</i>. We will get to that later, for now lets focus on normal stuff!
+                      </p>
+                      <h4>Normal Commands</h4>
+                      <p>
+                          All normal commands will be exposed to the Contoll serivce by the zombie when synchronizing it's plugin-list.
+                      </p>
+                      <p>
+                          Lets say you have an activity in your plugin named <i>HelloWorld</i> which have one command and it requires one parameter. It
+                          should be the callers name. How is this interfaced to the client? And how can you control it? Well, that is what a <b>Parameter
+                                                                                                                                                 Descriptor</b> is for!
+                      </p>
+                      <h4>The Parameter Descriptor</h4>
+                      <p>
+                          A Parameter Descriptor contains metadata for one of the parameters needed for a command to be executed. The metadata
+                          controlls if your parameter should be interfaced like a textbox, a dropdown or a checkbox. It also contains the label and
+                          a description (optional).
+                      </p>
+                      <p>So your parameter descriptors for the HelloWorld command would be just one with the properties:</p>
+                      <ul>
+                          <li>Label: "Name"</li>
+                          <li>Type: Textbox</li>
+                          <li>Description: "Please enter Your name"</li>
+                      </ul>
+                      <h4>Alright! What about them intermidiate commands?</h4>
+                      <p>
+                          The <i>intermidiate commands</i> are commands that are not exposed to the caller but are a kind of
+                          "return value" from another command. Lets use the simple <i>HelloWorld</i> command from above.
+                      </p>
+                      <p>What if you want to ask the caller, by his or her name, what year of time it is? You will want to return a list of
+                          possible values (spring, summer, autumn and winter) and let the caller choose from these. This is what <b>intermidiate commands</b>
+                          are for! And each of the values have their own metadata which contains information about them and which commands will be called
+                          when activated.
+                      </p>
+                  </article>
+                  <article id="coding-plugins">
+                      <h2 >Coding Plugins</h2>
+                      <p>Let create our activity HelloWorld and learn by doing! First we start with the bare minimum:</p>
+                      <pre class="prettyprint lang-java">
 using System;
 using Controll.Common;
 
@@ -213,25 +208,25 @@ public class SampleActivity : IControllPlugin
 }
 
                   </pre>
-                  <p>
-                      Lets go through this! <br/>
-                      First we call <code class="prettyprint">context.Started();</code>, this only is to message the Controll serivce that
-                      the activity have been invocated.<br />
-                      We when right after call <code class="prettyprint">context.Finish("Hello world!");</code> which is to message the Controll
-                      service that the execution of the activity is finished and send back any a friendly message!
-                  </p>
-                  <p>
-                      That wasn't so complex, was it? So what about all that ViewModel-stuff below? Well, if you read it through it is only a
-                      class which describes the activity and contains some information about who the creator was, the activity name and a description
-                      and some more stuff which is obvious from the property names. 
-                  </p>
-                  <h4>Lets ask the caller for their name!</h4>
-                  <p>
-                      Alright! First we must declare in the ViewModel that we have a command that needs a parameter containing the callers name! Lets add
-                      this below <code class="prettyprint">Version = new Version(1,0,0,0)</code> in the ViewModel (remember to 
-                      add <code class="prettyprint">,</code> after that line):
-                  </p>
-                  <pre class="prettyprint lang-java">
+                      <p>
+                          Lets go through this! <br/>
+                          First we call <code class="prettyprint">context.Started();</code>, this only is to message the Controll serivce that
+                          the activity have been invocated.<br />
+                          We when right after call <code class="prettyprint">context.Finish("Hello world!");</code> which is to message the Controll
+                          service that the execution of the activity is finished and send back any a friendly message!
+                      </p>
+                      <p>
+                          That wasn't so complex, was it? So what about all that ViewModel-stuff below? Well, if you read it through it is only a
+                          class which describes the activity and contains some information about who the creator was, the activity name and a description
+                          and some more stuff which is obvious from the property names. 
+                      </p>
+                      <h4>Lets ask the caller for their name!</h4>
+                      <p>
+                          Alright! First we must declare in the ViewModel that we have a command that needs a parameter containing the callers name! Lets add
+                          this below <code class="prettyprint">Version = new Version(1,0,0,0)</code> in the ViewModel (remember to 
+                          add <code class="prettyprint">,</code> after that line):
+                      </p>
+                      <pre class="prettyprint lang-java">
 Commands = new List&lt;ActivityCommandViewModel&gt;
 {
     new ActivityCommandViewModel
@@ -250,25 +245,25 @@ Commands = new List&lt;ActivityCommandViewModel&gt;
         }
 }
 </pre>
-                  <p>
-                      Don't be scared! It isn't <i>that</i> much! This code sets the <code class="prettyprint">Commands</code> property on the ViewModel to a
-                      list which conaints one command. That commands name is "Say Hello" and it has one parameter with the label "Your Name". It would be interfaced
-                      something like this:
-                  </p>
-                  <form class="well">
-                      <fieldset>
-                          <legend>Say hello</legend>
-                          <label><b>Your name</b></label>
-                          <input type="text" placeholder="">
-                          <span class="help-block">Please enter your name.</span>
-                          <button type="submit" class="btn btn-primary" >Ok</button>
-                      </fieldset> 
-                  </form>
-                  <p>
-                      Cool, huh!? Alright, so now we want the activity to process the parameter, replace the current code inside 
-                      the <code class="prettyprint">Execute</code> method with this:
-                  </p>
-                  <pre class="prettyprint lang-java">
+                      <p>
+                          Don't be scared! It isn't <i>that</i> much! This code sets the <code class="prettyprint">Commands</code> property on the ViewModel to a
+                          list which conaints one command. That commands name is "Say Hello" and it has one parameter with the label "Your Name". It would be interfaced
+                          something like this:
+                      </p>
+                      <div  class="well">
+                          <fieldset>
+                              <legend>Say hello</legend>
+                              <label><b>Your name</b></label>
+                              <input type="text" placeholder="">
+                              <span class="help-block">Please enter your name.</span>
+                              <button type="submit" class="btn btn-primary" >Ok</button>
+                          </fieldset> 
+                      </div>
+                      <p>
+                          Cool, huh!? Alright, so now we want the activity to process the parameter, replace the current code inside 
+                          the <code class="prettyprint">Execute</code> method with this:
+                      </p>
+                      <pre class="prettyprint lang-java">
 public void Execute(IPluginContext context)
 {
     context.Started();
@@ -277,27 +272,27 @@ public void Execute(IPluginContext context)
     context.Finish("Hello " + callerName);
 }
 </pre>
-                  <p>
-                      That's it! If you would execute that activity with the parameter <code class="prettyprint">name = "foo"</code> you would be
-                      returned "Hello foo!".
-                  </p>
-                  <div class="alert alert-info">
-                      It is a good idea to create stateless plugins. If the caller isnt online when the response from the zombie is sent it is lost forever.
-                      (Persistent results are a planned feature though but not in the near future)
-                  </div>
+                      <p>
+                          That's it! If you would execute that activity with the parameter <code class="prettyprint">name = "foo"</code> you would be
+                          returned "Hello foo!".
+                      </p>
+                      <div class="alert alert-info">
+                          It is a good idea to create stateless plugins. If the caller isnt online when the response from the zombie is sent it is lost forever.
+                          (Persistent results are a planned feature though but not in the near future)
+                      </div>
 
-                  <h4>Implement an intermidiate command</h4>
-                  <p>
-                      Sometimes you want the user to be able to respond to a response from an activity. It could be the result list for a search for some music
-                      that he had searched for, and by selecting a song from the results the "play song"-command is automatically called with information
-                      for that selected song.
-                  </p>
-                  <p>
-                      Sending an intermidiate command is really simple! You just call the <code class="prettyprint">IActivityContext.ActivityResult(object)</code> method.
-                      The object here should (for a intermidiate command) be of the type <code class="prettyprint">ActivityCommandViewModel</code>. You create this
-                      view model as you would for a normal command. For example:
-                  </p>
-                  <pre class="prettyprint lang-java">
+                      <h4 id="coding-plugins-intermidiatecommands">Implement an intermidiate command</h4>
+                      <p>
+                          Sometimes you want the user to be able to respond to a response from an activity. It could be the result list for a search for some music
+                          that he had searched for, and by selecting a song from the results the "play song"-command is automatically called with information
+                          for that selected song.
+                      </p>
+                      <p>
+                          Sending an intermidiate command is really simple! You just call the <code class="prettyprint">IActivityContext.ActivityResult(object)</code> method.
+                          The object here should (for a intermidiate command) be of the type <code class="prettyprint">ActivityCommandViewModel</code>. You create this
+                          view model as you would for a normal command. For example:
+                      </p>
+                      <pre class="prettyprint lang-java">
 public void Execute(IActivityContext context)
 {
     context.Started();
@@ -331,36 +326,414 @@ public void Execute(IActivityContext context)
     context.Finish("");
 }
 </pre>
-                  <p>
-                      So what is going on here? An important aspect of this snippet is that it requires a <strong>normal command</strong> which invokes the <code class="prettyprint">select-fruit</code> command.
-                      Note that by having a command that justs returns an intermidiate command is completely redundant!
-                  </p>
-                  <p>
-                      Alright, now when we've got that out of the way, what we can see is that by creating a new <code class="prettyprint">ActivityCommandViewModel</code> and feeding that 
-                      into <code class="prettyprint">context.Result()</code> the caller will recieve this command, and when he views it, it will be interfaced like this:
-                  </p>
-                  <form class="well">
-                      <fieldset>
-                          <legend>Select fuit, then!</legend>
-                          <label><b>Fruits</b></label>
-                          <select value="apple" class="span4" tabindex="1" name="herolist" style="display: none;">
-                            <option value="apple">apple</option>
-                            <option value="pear">pear</option>
-                            <option value="banana">banana</option>
-                          </select>
+                      <p>
+                          So what is going on here? An important aspect of this snippet is that it requires a <strong>normal command</strong> which invokes the <code class="prettyprint">select-fruit</code> command.
+                          Note that by having a command that justs returns an intermidiate command is completely redundant!
+                      </p>
+                      <p>
+                          Alright, now when we've got that out of the way, what we can see is that by creating a new <code class="prettyprint">ActivityCommandViewModel</code> and feeding that 
+                          into <code class="prettyprint">context.Result()</code> the caller will recieve this command, and when he views it, it will be interfaced like this:
+                      </p>
+                      <div class="well">
+                          <fieldset>
+                              <legend>Select fuit, then!</legend>
+                              <label><b>Fruits</b></label>
 
-                          <span class="help-block">Pick a fruuuit!</span>
-                          <button type="submit" class="btn btn-primary">Ok</button>
-                      </fieldset>
-                  </form>
+                              <select class="selectpicker" data-style="btn-info">
+                                  <option>apple</option>
+                                  <option>pear</option>
+                                  <option>banana</option>
+                              </select>
+                              <span class="help-block">Pick a fruuuit!</span>
+
+                              <button type="submit" class="btn btn-primary">Ok</button>
+                          </fieldset>
+                      </div>
+                  </article>
+                  <article id="coding-plugins-fluent">
+                      <h2>Fluent Interface</h2>
+                      <p>
+                          To make life easier for you creating an activity's view model can be done through the fluent interface:
+                      </p>
+                      <pre class="prettyprint lang-java">
+ActivityViewModel
+        .AsFluent()
+        .Name("Sample Activity")
+        .Description("Does nothing!")
+        .CreatorName("Some Awesome Person")
+        .LastUpdatedAsBuildDate()
+        .Version(1,0,0,0)
+        .AddCommand(c => c.Name("simple")
+                          .Label("Simple Command")
+                          .AddParameter(p => p.Label("Some Parameter")
+                                              .Name("parameter1")));
+                                
+</pre>
+                  </article>
+              </section>
+              
+              <section id="controll-service">
+                  <div class="page-header">
+                      <h1>Controll Service</h1>
+                  </div>
+                  <div class="lead" style="margin-bottom:-25px">
+                      The Controll Service consists of the server and a transaction database. It can be run as a stand alone executable or
+                      withing an ASP.NET application.
+                  </div>
+                  <article id="deploying">
+                      <h2 >Deploying
+                      </h2>
+                      <p>
+                          Deplying is really simple. Just download the <a href="@Url.Content("~/Downloads/")">binaries</a> for the server
+                          and modify app.settings to contain a connection string named controll-db. For example:
+                      </p>
+                      <pre class="prettyprint lang-xml">
+  &lt;connectionStrings&gt;
+    &lt;add name="controll-db" connectionString="Server=MSSSQL;Database=Controll;Trusted_Connection=True;"/&gt;
+  &lt;connectionStrings&gt;
+</pre>
+                      <h4>Stand Alone Deployment</h4>
+                      <p>
+                          This is the simples approach to deploying Controll. Create an application and in it make an instance of
+                          <code class="prettyprint">Controll.Hosting.ControllStandAloneServer</code>, then call 
+                          <code class="prettyprint">Start()</code>! Then you are up and running! There exists a really
+                          <a href="@Url.Content("~/Downloads/#more")">simple stand alone console application</a> for this.
+                      </p>
+                      <h4>ASP.NET Application</h4>
+                      <p>
+                          To integrate Controll into a ASP.NET application, reference Controll.Hosting and SignalR and add this to global.asax:
+                      </p>
+                      <pre class="prettyprint lang-java">
+Controll.Hosting.Bootstrapper.StrapTheBoot();
+
+RouteTable.Routes.MapHubs(new HubConfiguration
+    {
+        Resolver = Controll.Hosting.Bootstrapper.NinjectDependencyResolver
+    });
+</pre>
+                      <p>Simple, huh!?</p>
+                  </article>
+                  <article id="communications-model">
+                  <h2>Communications Model</h2>
+                  
+                  <div class="alert alert-info alert-block">
+                      <h4>Todo!</h4>
+                      I will write this some day! In the mean time you can look at the 
+                      <a href="https://github.com/thecopy/Controll/blob/master/Documents/developement-plan.pdf"><u>developement-plan.pdf</u></a> to
+                      familiarize yourself.
+                  </div>
+                  </article>
+              </section>
+              <section>
+                  <div class="page-header">
+                      <h1>Reference</h1>
+                  </div>
+                  <div class="lead">
+                      More interested in how the cogs cog? This is the section for you!
+                  </div>
+                  <article id="reference-iactivity">
+                      <h2>
+                          IActivity <small>Controll.Common</small>
+                      </h2>
+                      The IActivity is the interface all activities need to implement and it contains some fundamental tools for communication.
+                      <h4>Members</h4>
+                      <table class="table table-striped table-bordered">
+                          <thead>
+                              <tr>
+                                  <th>Name</th>
+                                  <th style="width:60%">Description</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>Execute(IActivityContext) : void
+                                  </td>
+                                  <td>This is the entry point for the activity and gets called by the zombie when invoked. See <a href="#reference-iactivitycontext">IActivityContext</a> for more.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>ViewModel : ActivityViewModel
+                                  </td>
+                                  <td>Contains the view model describing the commands and parameter requirements exposed to the Controll service. See <a href="#reference-activityviewmodel">View Models</a> for more.
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </article>
+                  <article id="reference-iactivitycontext">
+                      <h2>
+                          IActivityContext <small>Controll.Common</small>
+                      </h2>
+                      The IActivityContext contains the parameters passed to the activity and also methods for communication with the caller.
+                      <h4>Members</h4>
+                      <table class="table table-striped table-bordered">
+                          <thead>
+                              <tr>
+                                  <th>Name</th>
+                                  <th style="width:60%">Description</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>Started() : void
+                                  </td>
+                                  <td>This should be called when the activity has started.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Finish(string) : void
+                                  </td>
+                                  <td>This should be called when the activity is finished. The string-parameter should may contain some return value.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Error(string) : void
+                                  </td>
+                                  <td>This should be called when an error is encoutered and if it is wished that it is relayed to the caller.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Notify(string) : void
+                                  </td>
+                                  <td>This method it used to notify the caller, maybe of some type of progress during a long process.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Result(object) : void
+                                  </td>
+                                  <td>Used to pass an arbritrary object to the caller. This is used for <a href="#coding-plugins-intermidiatecommands">intermidiate commands</a>.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>CommandName : string
+                                  </td>
+                                  <td>This is name name of the command which is to be activated.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Parameters : IDictionary&lt;string,string&gt;
+                                  </td>
+                                  <td>This contains all the parameters passed to the activity. The key is the value of the Name property for the corresponding
+                                      <a href="#reference-parameterdescriptorviewmodel">ParameterDescriptor</a>.
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </article>
+                  <article id="reference-activityviewmodel">
+                      <h2>
+                          ActivityViewModel <small>Controll.Common.ViewModels</small>
+                      </h2>
+                      The ActivityViewModel contains information about an activity and describes all the commands and parameters. The ActivityViewModel is what a
+                      client recieves when he/she requests information about an activity.
+                      <h4>Members</h4>
+                      <table class="table table-striped table-bordered">
+                          <thead>
+                              <tr>
+                                  <th>Name</th>
+                                  <th style="width:60%">Description</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>Name : string
+                                  </td>
+                                  <td>The activity's friendly name
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>CreatorName : string
+                                  </td>
+                                  <td>Name of the creator(s)
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Version : System.Version
+                                  </td>
+                                  <td>The version of this activity.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>LastUpdated : System.DateTime
+                                  </td>
+                                  <td>The date of when the activity last was updated.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Description : System.DateTime
+                                  </td>
+                                  <td>A decription of the activity.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Key : System.Guid
+                                  </td>
+                                  <td>An UUID key for this activity. There should be a new key for every version of the same activity.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Commands : <a href="#reference-activitycommandviewmodel">ActivityCommandViewModel</a>
+                                  </td>
+                                  <td>The commands of the activity.
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </article>
+                  <article id="reference-activitycommandviewmodel">
+                      <h2>
+                          ActivityCommandViewModel <small>Controll.Common.ViewModels</small>
+                      </h2>
+                      The ActivityCommandViewModel contains information about an activity's command and specifies the required parameters (if any).
+                      <h4>Members</h4>
+                      <table class="table table-striped table-bordered">
+                          <thead>
+                              <tr>
+                                  <th>Name</th>
+                                  <th style="width:60%">Description</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>Label : string
+                                  </td>
+                                  <td>Specifies the label for this command. This is what would be listed on the callers device when enumerating an activity's command.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Name : string
+                                  </td>
+                                  <td>Specifies the name for this command. This is the value of IActivityContext.CommandName in IActivity.Execute when the command is invoked.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>ParameterDescriptors : IEnumerable&lt;<a href="#reference-parameterdescriptorviewmodel">ParameterDescriptorViewModel</a>&gt;
+                                  </td>
+                                  <td>Contains all the parameters requires for this comand.
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </article>
+                  <article id="reference-parameterdescriptorviewmodel">
+                      <h2>
+                          ParameterDescriptorViewModel <small>Controll.Common.ViewModels</small>
+                      </h2>
+                      The ParameterDescriptorViewModel contains information about a command's parameter.
+                      <h4>Members</h4>
+                      <table class="table table-striped table-bordered">
+                          <thead>
+                              <tr>
+                                  <th>Name</th>
+                                  <th style="width:60%">Description</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>Label : string
+                                  </td>
+                                  <td>Specifies the label for this partameter. This is what would be listed on the callers device when showing a command's parameters.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Name : string
+                                  </td>
+                                  <td>Specifies the name for this partameter. This is the key in the IActivityContext.Parameters dictionary when the command is invoked.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Description : string
+                                  </td>
+                                  <td>This is a description for this parameter. Maybe some short information about in what format some data should be entered or the likes.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>IsBoolean : bool
+                                  </td>
+                                  <td>If this is true then a checkbox will be displayed and the value of this command will be 0 or 1 depending on if the caller checked
+                                      the box or not.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>PickerValues : IEnumerable&lt;<a href="#reference-pickervalueviewmodel">PickerValueViewModel</a>&gt;
+                                  </td>
+                                  <td>If this is empty a textbox will be displayed. Otherwise this is the values from which the caller can choose from in a dropdown-list.
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </article>
+                  <article id="reference-pickervalueviewmodel">
+                      <h2>
+                          PickerValueViewModel <small>Controll.Common.ViewModels</small>
+                      </h2>
+                      The PickerValueViewModel contains information about a parameters picker values.
+                      <div class="alert alert-info"> 
+                      <strong>Remark:</strong>When the property <i>IsCommand</i> is set to true, all the other parameters for the parent command 
+                          will be injected into the parameters of the command of that picker value item.  
+                          <a href="#coding-plugins-pickervalues">Learn More</a>.
+                  </div>
+                      <h4>Members</h4>
+                      <table class="table table-striped table-bordered">
+                          <thead>
+                              <tr>
+                                  <th>Name</th>
+                                  <th style="width:60%">Description.</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>Label : string
+                                  </td>
+                                  <td>The label for this picker value item. This is interfaced as the most prominent identifier.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Description : string
+                                  </td>
+                                  <td>Specifies the description for this picker value. This is what would be listed on the callers device when showing the picker 
+                                      values as a smaller subtitle to the label.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Identifier : string
+                                  </td>
+                                  <td>The identifier for this item. This is the value for the parameter if this picker value is chosen by the caller.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>IsCommand : string
+                                  </td>
+                                  <td>If this is true this picker value will call another command if selected by the caller.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>CommandName : bool
+                                  </td>
+                                  <td>If this is true then a checkbox will be displayed and the value of this command will be 0 or 1 depending on if the caller checked
+                                      the box or not.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Parameters : IDictionary&lt;string, string&gt;
+                                  </td>
+                                  <td>A list of parameters to pass with the command named <i>CommandName</i> when this is the selected picker value.
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </article>
+              </section>
+              
+              <section>
+                  <div class="page-header" id="license"><h1>License</h1></div>
+                  <div class="lead">Looking to use Controll in your project or in your company?<br/>
+                      Controll is licensed under the <a href="https://www.gnu.org/licenses/gpl-3.0.txt">GNU General Public Licese (GPL) Version 3, 29 June 2007</a>.
+
+                  </div>
+
               </section>
           </div>
           <!--/span-->
       </div>
 <!--/row-->
-
-<hr />
-
-      <footer>
-        <p></p>
-      </footer>

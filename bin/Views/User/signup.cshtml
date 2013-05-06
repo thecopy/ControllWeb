@@ -1,0 +1,62 @@
+﻿@{
+    Layout = "_layout.cshtml";
+}
+<style type="text/css">
+    body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+    }
+
+    .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    }
+
+        .form-signin .form-signin-heading,
+        .form-signin .checkbox {
+            margin-bottom: 10px;
+        }
+
+        .form-signin input[type="text"],
+        .form-signin input[type="password"] {
+            font-size: 16px;
+            height: auto;
+            margin-bottom: 15px;
+            padding: 7px 9px;
+        }
+</style>
+<div class="row-fluid">
+    <form class="form-signin offset4 span4" method="POST" style="margin-top: 50px">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input name="username" type="text" class="input-block-level focused" autofocus placeholder="Username or Email address">
+        <input name="password" type="password" class="input-block-level" placeholder="Password">
+        <label class="checkbox">
+            <input type="checkbox" value="remember-me">
+            Remember me
+        </label>
+        <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+    </form>
+
+    <form class="form-signin span4 btn-success" method="POST" style="margin-top: 50px">
+        <h2 class="form-signin-heading" style="color: black">...or sign up</h2>
+        <input type="text" class="input-block-level" placeholder="Choose a Username">
+        <input type="text" class="input-block-level" placeholder="Choose a Password">
+        <input type="text" class="input-block-level" placeholder="Email address">
+        <label class="checkbox">
+            <input type="checkbox" value="remember-me">
+            Remember me
+        </label>
+        <button class="btn btn-large btn-warning" type="submit">Sign up and in</button>
+        <p><small>We will not bother you with emails and we will not sell your address or anything. Besides for that forgot password email you may request in the future.</small></p>
+    </form>
+</div>

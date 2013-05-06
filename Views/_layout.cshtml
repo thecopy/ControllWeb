@@ -1,6 +1,6 @@
 ﻿@using SquishIt.Framework
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <title>Controll</title>
     @{
@@ -20,7 +20,8 @@
                 .Add("~/Content/js/bootstrap-select.min.js")
                 .Render("~/Content/Controll_#.js"));
         }
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        @{
+            <div class="navbar navbar navbar-fixed-top ">
             <div class="navbar-inner">
                 <div class="container">
                     <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -30,9 +31,8 @@
                     </button>
                     <a class="brand" href="#">Controll</a>
                     <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="active"><a href="@Url.Content("~/")">About</a></li>
-                            <li><a href="@Url.Content("~/Documentation/#")">Quick Start</a></li>
+                        <ul id="main-navbar" class="nav">
+                            <li><a href="@Url.Content("~/")">About</a></li>
                             <li><a href="@Url.Content("~/Documentation/")">Documentation</a></li>
                             <li><a href="@Url.Content("~/Downloads/")">Downloads</a></li>
                         </ul>
@@ -41,14 +41,68 @@
                 </div>
             </div>
         </div>
+        }
         <div class="container">
+        @{
+            /*<div class="masthead">
+                <h3 class="muted">Project name</h3>
+                <div class="navbar affix">
+                    <div class="navbar-inner">
+                        <div class="container">
+                            <ul class="nav">
+                                <li class="active"><a href="#">Home</a></li>
+                                <li><a href="#">Projects</a></li>
+                                <li><a href="#">Services</a></li>
+                                <li><a href="#">Downloads</a></li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!-- /.navbar -->
+            </div>*/
+            }
             @RenderBody()
         </div>
         
         <!-- Put this at the bottom to speed up -->
         <script type="text/javascript" src="/Content/js/google-code-prettify/run_prettify.js"></script>
         <script type="text/javascript">
-
+            var url = window.location.pathname;
+            $('#main-navbar a[href="' + url + '"]').parent().addClass('active');
         </script>
+
+<hr />
+
+        <footer class="container">
+            
+            <div class="row-fluid">
+                <div class="span4">
+                    <h2>Controll SDK</h2>
+                    <p>
+                        You will need the SDK to develop new plugin. The SDK contains some common models that is shared through out the
+                        Controll framework
+                    </p>
+                    <p><a class="btn" href="#">View Details</a></p>
+                </div>
+                <!--/span-->
+                <div class="span4">
+                    <h2>Binaries</h2>
+                    <p>
+                        What would the world be without binaries? Who has time to compile from source and end up in dependency hell?
+                        Download pre-compiled binaries today!<br />
+                        <small>Requires Microsoft .NET Framework</small>
+                    </p>
+                    <p><a class="btn" href="#">View details</a></p>
+                </div>
+                <!--/span-->
+                <div class="span4">
+                    <h2>Source Code</h2>
+                    <p>Looking to contribute? The source code for Controll is available at GitHub, head over there and get started!</p>
+                    <p><a class="btn" href="https://github.com/thecopy/Controll">Go to GitHub</a></p>
+                </div>
+                <!--/span-->
+            </div>
+        </footer>
     </body>
 </html>
