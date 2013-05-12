@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastUsedBuildConfiguration>Debug</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="apple-touch-icon-114x114-precomposed.png">
+      <publishTime>05/06/2013 11:36:04</publishTime>
+    </File>
+    <File Include="apple-touch-icon-57x57-precomposed.png">
+      <publishTime>05/06/2013 11:36:04</publishTime>
+    </File>
+    <File Include="apple-touch-icon-72x72-precomposed.png">
+      <publishTime>05/06/2013 11:36:04</publishTime>
+    </File>
+    <File Include="apple-touch-icon-precomposed.png">
+      <publishTime>05/06/2013 11:36:04</publishTime>
+    </File>
+    <File Include="apple-touch-icon.png">
+      <publishTime>05/06/2013 11:36:04</publishTime>
+    </File>
+    <File Include="bin/ControllWeb.dll">
+      <publishTime>05/06/2013 13:11:59</publishTime>
+    </File>
+    <File Include="bin/ControllWeb.pdb">
+      <publishTime>05/06/2013 13:11:59</publishTime>
+    </File>
+    <File Include="bin/Nancy.dll">
+      <publishTime>05/05/2013 12:55:07</publishTime>
+    </File>
+    <File Include="bin/Nancy.Hosting.Aspnet.dll">
+      <publishTime>05/05/2013 12:55:07</publishTime>
+    </File>
+    <File Include="bin/Nancy.ViewEngines.Razor.dll">
+      <publishTime>05/05/2013 12:55:07</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.Unofficial.dll">
+      <publishTime>05/05/2013 12:55:07</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.Unofficial.pdb">
+      <publishTime>05/05/2013 12:55:07</publishTime>
+    </File>
+    <File Include="Content/css/bootstrap-responsive.css">
+      <publishTime>05/06/2013 13:04:04</publishTime>
+    </File>
+    <File Include="Content/css/bootstrap-responsive.min.css">
+      <publishTime>05/06/2013 13:04:04</publishTime>
+    </File>
+    <File Include="Content/css/bootstrap.css">
+      <publishTime>05/06/2013 13:04:04</publishTime>
+    </File>
+    <File Include="Content/css/bootstrap.min.css">
+      <publishTime>05/06/2013 13:04:04</publishTime>
+    </File>
+    <File Include="Content/css/main.css">
+      <publishTime>05/06/2013 13:04:04</publishTime>
+    </File>
+    <File Include="Content/img/glyphicons-halflings-white.png">
+      <publishTime>05/06/2013 13:04:04</publishTime>
+    </File>
+    <File Include="Content/img/glyphicons-halflings.png">
+      <publishTime>05/06/2013 13:04:04</publishTime>
+    </File>
+    <File Include="Content/nancy-logo.png">
+      <publishTime>05/05/2013 12:55:02</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>05/06/2013 11:36:04</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>05/06/2013 12:44:31</publishTime>
+    </File>
+    <File Include="robots.txt">
+      <publishTime>05/06/2013 11:36:04</publishTime>
+    </File>
+    <File Include="Scripts/main.js">
+      <publishTime>05/06/2013 13:03:54</publishTime>
+    </File>
+    <File Include="Scripts/vendor/bootstrap.js">
+      <publishTime>05/06/2013 13:03:54</publishTime>
+    </File>
+    <File Include="Scripts/vendor/bootstrap.min.js">
+      <publishTime>05/06/2013 13:03:54</publishTime>
+    </File>
+    <File Include="Scripts/vendor/jquery-1.9.1.min.js">
+      <publishTime>05/06/2013 13:03:54</publishTime>
+    </File>
+    <File Include="Scripts/vendor/modernizr-2.6.2-respond-1.1.0.min.js">
+      <publishTime>05/06/2013 13:03:54</publishTime>
+    </File>
+    <File Include="Views/index.cshtml">
+      <publishTime>05/06/2013 12:53:17</publishTime>
+    </File>
+    <File Include="Views/_layout.cshtml">
+      <publishTime>05/06/2013 13:10:39</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>05/06/2013 13:12:00</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

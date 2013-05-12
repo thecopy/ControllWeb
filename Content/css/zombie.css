@@ -1,0 +1,91 @@
+﻿/* setting up animated transitions, and some defaults */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* make'em all full screen */
+.container div {
+    top: 120px;
+    bottom: 0;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.header {
+    background-color: lavender;
+    height: 120px;
+}
+
+/* set up log defaults */
+.log {
+    position: absolute;
+    left: 0;
+    background-color: gold;
+}
+/* set up log, if invoke's visible or if it isn't (defined by the containers class) */
+.invokehidden .log {
+    right: 235px;
+}
+.invokevisible .log {
+    right: 585px; /*235px + 350px ( activities + invoke width )*/
+}
+
+/* set up invoke defaults */
+.invoke {
+    position: absolute;
+    overflow: hidden;
+    right: 235px;
+    background-color: mediumslateblue;
+}
+/* set up invoke, if it's visible or not (defined by the containers class) */
+.invokehidden .invoke {
+    width: 0;
+}
+.invokevisible .invoke {
+    width: 350px;
+}
+
+/* set up activities */
+.activities {
+    position: absolute;
+    right: 0;
+    width: 235px;
+    background-color: lightcoral;
+}
+
+.logitems {
+    border: 3px solid orchid;
+    overflow: auto;
+    margin-left: 0px;
+    margin-top: 0px;
+    padding-left: 0px;
+    left: 0;
+    right: 0px;
+    position: absolute;
+    top: 55px;
+    bottom: 40px;
+    background-color: #fff;
+}
+
+.logitem {
+    background: #eee;
+}
+    .logitem .left {
+        float: left;
+        width: 220px; /* width should exclude padding */
+        padding: 5px;
+        font-weight: bold;
+    }
+    .logitem .middle {
+        margin-left: 225px;
+    }
+    .logitem .right {
+        float: right;
+        width: 220px; /* width should exclude padding */
+        padding: 5px;
+    }
+
+.selectedPickerValue {
+    background: lightsalmon;
+}

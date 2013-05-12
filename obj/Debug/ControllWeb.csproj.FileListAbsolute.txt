@@ -1,4 +1,3 @@
-C:\Dev\Repos\ControllWeb\ControllWeb\obj\Debug\ControllWeb.csprojResolveAssemblyReference.cache
 C:\Dev\Repos\ControllWeb\ControllWeb\bin\ControllWeb.dll
 C:\Dev\Repos\ControllWeb\ControllWeb\bin\ControllWeb.pdb
 C:\Dev\Repos\ControllWeb\ControllWeb\bin\Nancy.dll
@@ -8,3 +7,16 @@ C:\Dev\Repos\ControllWeb\ControllWeb\bin\System.Web.Razor.Unofficial.dll
 C:\Dev\Repos\ControllWeb\ControllWeb\bin\System.Web.Razor.Unofficial.pdb
 C:\Dev\Repos\ControllWeb\ControllWeb\obj\Debug\ControllWeb.dll
 C:\Dev\Repos\ControllWeb\ControllWeb\obj\Debug\ControllWeb.pdb
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Microsoft.AspNet.SignalR.Owin.dll
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Microsoft.Web.Infrastructure.dll
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Newtonsoft.Json.dll
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Owin.dll
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Microsoft.AspNet.SignalR.Owin.xml
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Newtonsoft.Json.xml
+C:\Dev\Repos\ControllWeb\ControllWeb\obj\Debug\ControllWeb.csprojResolveAssemblyReference.cache
