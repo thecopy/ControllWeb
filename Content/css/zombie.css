@@ -54,6 +54,10 @@
     background-color: lightcoral;
 }
 
+li.activity a {
+        cursor: pointer
+}
+
 .logitems {
     border: 3px solid orchid;
     overflow: auto;
@@ -68,22 +72,35 @@
     background-color: #fff;
 }
 
+.logitems li {
+        list-style-type: none;
+        position: relative;
+        margin: 0px;
+}
+
 .logitem {
-    background: #eee;
+    border-bottom: 1px solid #eee;
+    border-left: 175px solid #f1f1f1;
 }
     .logitem .left {
         float: left;
-        width: 220px; /* width should exclude padding */
+        width: 170px; /* width should exclude padding */
         padding: 5px;
-        font-weight: bold;
+        margin-left: -175px;
     }
+
     .logitem .middle {
-        margin-left: 225px;
-    }
-    .logitem .right {
-        float: right;
-        width: 220px; /* width should exclude padding */
+        margin-right: 95px;
         padding: 5px;
+        word-wrap: break-word;
+    }
+
+    .logitem .right {
+        position: absolute;
+        padding: 5px;
+        top: 0px;
+        right: 0px;
+        width: 85px;
     }
 
 .selectedPickerValue {

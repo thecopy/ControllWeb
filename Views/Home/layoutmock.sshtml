@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>aaaa</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="@Path['~/Content/css/bootstrap.min.css']">
+    <style>
+        body {
+            font-family: Lato;
+        }
+    </style>
+    <link rel="stylesheet" href="@Path['~/Content/css/bootstrap-responsive.min.css']">
+        <link rel="stylesheet" href="@Path['~/Content/css/font-awesome.min.css']">
+    <link rel="stylesheet" href="@Path['~/Content/css/zombie.css']">
+
+    <script src="@Path['~/Content/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js']"></script>
+    <script type="text/html" id="command-invocation-form-template">
+        <h3 data-bind="text: label"></h3>
+        <fieldset data-bind="foreach: parameters">
+            <!-- ko if: isBoolean -->
+            <input type="checkbox" data-bind="attr: { name: name, id: name }"/><span data-bind="text: label" />
+            <!-- /ko -->
+            <!-- ko if: pickerValues.length == 0 -->
+            <input type="text" data-bind="attr: { name: name, placeholder: label, id: name }" />
+            <!-- /ko -->
+            <!-- ko if: pickerValues.length > 0 -->
+            <ol class="well picker-values" data-bind="attr: { id: name }, foreach: { data: pickerValues }">
+                <li data-bind="attr: { 'data-identifier': identifier }">
+                    <strong data-bind="text: label"></strong>
+                    <br />
+                    <small data-bind="text: description"></small>
+                </li>
+            </ol>
+            <!-- /ko -->
+            <br />
+            <span data-bind="text: description"></span><br/>
+        </fieldset>
+        <input type="submit"/>
+    </script>
+</head>
+<body>
+    <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+
+
+    <div class="header">
+        <ul class="nav nav-tabs" data-bind="foreach: zombies">
+            <li><a data-toggle="tab" data-bind="text: name, attr: { href: '#zombie-' + name }"></a></li>
+        </ul>
+    </div>
+    <div class="tab-content" data-bind="foreach: { data: zombies, as: 'zombie' }" role="application">
+        <div class="container invokehidden tab-pane" data-bind="attr: { id: 'zombie-' + name }">
+            <div class="log">
+                <h2 data-bind="text: name"></h2>
+                <button onclick="toggleInvokeTemp(this)">Toggle</button>
+                <ul class="logitems" data-bind="foreach: logItems">
+                    <li class="logitem">
+                        <div class="left" data-bind="text: activity.name + ': ' + command.label"></div>
+                        <div class="middle">Parameters:
+                            <ul data-bind="foreach: parameters">
+                                <li data-bind="text: label + '(' + name + '): ' + value"></li>
+                            </ul>
+                            Response:
+                            <ul data-bind="foreach: messages">
+                                <li>
+                                    Type: <span data-bind="text: type"></span>, Message: '<strong data-bind="text: message"></strong>'. <span data-bind="text: time"></span>
+                                </li>
+                            </ul>
+                            <div data-bind="if: result">
+                                Name: <span data-bind="text: name"></span>
+                                <button data-bind="click: function(data,event) { window.controll.ui.toggleInvocation(zombie, activity, data) }">Open</button>
+                            </div>
+                            </div>
+                        <div class="right" data-bind="text: time"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="activities">
+                <ul data-bind="foreach: { data: activities, as: 'activity' }">
+                    <li class="activity">
+                        <p>
+                            <i class="icon-cogs"></i>
+                            <a href="#" class="activity-name"
+                                onclick="window.controll.ui.toggleCommands(this); return false;"
+                                data-bind="text: name"></a>
+                        </p>
+                        <ul style="display: none" class="activity-commands"
+                            data-bind="foreach: commands">
+                            <li class="activity-command">
+                                <p>
+                                    <i class="icon-cog"></i>
+                                    <a href="#" data-bind="text: label, click: function(data,event) { window.controll.ui.toggleInvocation(zombie, activity, data); return false; }"></a>
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="invoke">
+                <button onclick="window.controll.ui.closeInvocation(this)">CLOSE</button>
+                <form
+                    class="invocationform"
+                    data-bind="template: { if: zombie.selectedCommand, name: 'command-invocation-form-template', data: zombie.selectedCommand },
+                               submit: function(formElement) { controll.ui.sendActivityInvocation(formElement, zombie, zombie.selectedCommand); return false; }">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="@Path['~/Content/js/vendor/jquery-1.9.1.min.js']"></script>
+    <script src="@Path['~/Content/js/vendor/bootstrap.min.js']"></script>
+    <script src="@Path['~/Content/js/vendor/knockout-2.2.1.debug.js']"></script>
+    <script src="@Path['~/Content/js/vendor/knockout.mapping.debug.js']"></script>
+    <script src="@Path['~/Content/js/vendor/moment.js']"></script>
+    <script src="@Path['~/Content/js/vendor/linq.js']"></script>
+    <script src="@Path['~/Content/js/main.js']"></script>
+    <script src="@Path['~/Content/js/signalr/jquery.signalR-1.1.1.js']"></script>
+    <script src="@Path['~/signalr/hubs']"></script>
+    <script src="@Path['~/Content/js/controll/controll.utility.js']"></script>
+    <script src="@Path['~/Content/js/controll/controll.vm.js']"></script>
+    <script src="@Path['~/Content/js/controll/controll.ui.js']"></script>
+    <script src="@Path['~/Content/js/controll/controll.js']"></script>
+    
+    <script type="text/javascript">
+        function toggleInvokeTemp(caller) {
+            $(caller).closest('.container').toggleClass('invokehidden invokevisible');
+        };
+
+    </script>
+    <script>
+        var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+        /*
+        (function (d, t) {
+            var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g, s)
+        }(document, 'script'));
+
+        */
+    </script>
+</body>
+</html>

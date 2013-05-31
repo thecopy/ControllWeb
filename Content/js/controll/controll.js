@@ -20,8 +20,7 @@
 
             var logItemVm = new controll.LogItem(id, zombie, activity, command, parameters, moment().calendar());
             ui.addInvocation(logItemVm);
-
-            console.log(parameterDictionary);
+            
             client.server.startActivity(zombie.name, activity.id, parameterDictionary, command.name)
             .done(function (ticket) {
                 ui.confirmDelivery(id, ticket);
@@ -47,28 +46,23 @@
     };
 
     $(function () {
-
         function initConnection() {
-            connection.hub.url = "http://localhost:10244/signalr"; //Stand Alone Hosting
+            var host = "";
+            connection.hub.url = host + "/signalr"; 
 
             ui.initialize();
-
-            // This is temporary until the hub auth gets refacatored for claims
-            // (and also until this app gets auth :P)
-            client.state.userName = "username";
-            var password = "password";
-            //end of temporary stuff
-
-            connection.hub.start()
+            
+            connection.hub.start({ transport: 'longPolling' })
                 .done(function () {
-                    client.server.logOn(password)
+                    client.server.signIn()
                     .fail(function (e) {
                         // Alert
-                        console.log("Failed to log on!");
+                        console.log("Failed to sign in!");
                         console.error(e);
                     })
                      .done(function () {
                          console.log("Log on: OK");
+                         console.log("Connection-Id: " + connection.hub.id);
                          // Get the zombies
                          client.server.getAllZombies()
                              .done(function (z) {
@@ -84,6 +78,24 @@
                     alert("Could not connect to hub!");
                 });
         }
+
+        connection.hub.disconnected(function() {
+            console.log('State: Disconnected!');
+        });
+        connection.hub.reconnecting(function () {
+            console.log('State: Reconnecting!');
+        });
+        connection.hub.reconnected(function () {
+            console.log('State: Reconnected!');
+        });
+        connection.hub.starting(function () {
+            console.log('State: Starting!');
+        });
+        connection.hub.error(function (error) {
+            console.log('SignalR error: ' + error);
+        });
+        connection.hub.logging = true;
+
 
         initConnection();
     });

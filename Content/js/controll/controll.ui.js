@@ -2,7 +2,8 @@
     "use strict";
 
     var $ui = null;
-
+    var vm = null;
+    
     $('body').on('click', 'ol.picker-values li', function () {
         $(this).addClass("selectedPickerValue").siblings().removeClass("selectedPickerValue");
     });
@@ -85,6 +86,7 @@
         initialize: function () {
             console.log("Initializing UI...");
             $ui = $(this);
+            vm = window.controll.viewModel;
         },
 
         setZombies: function (zombies) {
@@ -105,19 +107,18 @@
                 console.error('Invoked zombie not found in the Knockout View Model!');
                 return;
             }
-            console.log(invocationVm);
+            
             invocationVm.zombie.logItems.push(invocationVm);
+            invocationVm.zombie.selectedCommand(null);
         },
         
         confirmDelivery: function (uiid, ticket) {
-            console.log('Trying to confirm delivery of ticket ' + ticket);
             var matchedZombie = ko.utils.arrayFirst(window.controll.viewModel.zombies(), function (zombie) {
                 var logItem = ko.utils.arrayFirst(zombie.logItems(), function(k) {
                     return k.uiid == uiid;
                 });
                 if (logItem) {
                     logItem.ticket = ticket;
-                    console.log('Confirmed delivery, ticket: ' + ticket + '!');
                     return true;
                 }
                 return false;
@@ -129,14 +130,12 @@
         },
 
         addActivityMessage: function (ticket, type, message) {
-            console.log('Trying to add message for ticket ' + ticket);
             var matchedZombie = ko.utils.arrayFirst(window.controll.viewModel.zombies(), function (zombie) {
                 var logItem = ko.utils.arrayFirst(zombie.logItems(), function (k) {
                     return k.ticket == ticket;
                 });
                 if (logItem) {
                     logItem.messages.push(new controll.LogItemMessage(type, message));
-                    console.log('Added ' + type + '-message: ' + message + '!');
                     return true;
                 }
                 return false;
@@ -148,8 +147,6 @@
         },
 
         addActivityResult: function (ticket, result) {
-            console.log('Trying to add activity result for ticket ' + ticket);
-            console.log(result);
             var matchedZombie = ko.utils.arrayFirst(window.controll.viewModel.zombies(), function (zombie) {
                 var logItem = ko.utils.arrayFirst(zombie.logItems(), function (k) {
                     return k.ticket == ticket;
