@@ -14,9 +14,14 @@ namespace ControllWeb
         {
             //app.UseTestLogger();
 
+            var connectionStringAlias = "appharbor";
+#if DEBUG
+            connectionStringAlias = "mocked";
+#endif
+
             app.UseControll(new ControllHostingConfiguration
                 {
-                    ConnectionStringAlias = "appharbor",
+                    ConnectionStringAlias = connectionStringAlias,
                     ClearDatabase = false,
                     RedirectToLoginRoute = true,
                     LoginRoute = "/login",
