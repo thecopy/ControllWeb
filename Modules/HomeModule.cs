@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Nancy;
+﻿using System.Linq;
+using System.Security.Claims;
+using Controll.Hosting.Infrastructure;
+using ControllWeb.Infrastructure;
+using Microsoft.Owin;
 
-namespace ControllWeb.Modules
+namespace ControllWeb
 {
+    using Nancy;
+
     public class HomeModule : NancyModule
     {
         public HomeModule()
         {
-            Get["/"] = _ =>
-                {
-                    var view = View["index"];
-                    
-                    return view;
-                };
+            Get["/"] = parameters => View["login"];
+            Get["/login"] = _ => View["login"];
+
+            Get["/mock"] = parameters => View["layoutmock"];
         }
     }
 }

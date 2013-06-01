@@ -1,81 +1,99 @@
-﻿@{
-    Layout = "_layout.cshtml";
-}
-<div class="hero-unit">
-    <h1>Simple Remote Controlling!</h1>
-    <p>Have you ever wanted to be able to just write a quick script and then 5 minutes later executing it from your smart phone? 
-        Then Controll is for you!
-    </p>
-    <p>
-        Controll is a simple framework which isn't able to do anything without your plugins!<br/>
-        Some buzzwords:
-    </p>
-    <ul>
-        <li>Simple</li>
-        <li>The Cloud</li>
-        <li>Real Time</li>
-        <li>Lightweight</li>
-        <li>Extendable and Versatile</li>
-    </ul>
-        <p><a href="#learn-more" class="btn btn-primary btn-large">Learn more!</a></p>
-</div>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
 
-<section id="learn-more">
-    <div class="page-header">
-        <h1>How do i create a plugin?</h1>
-    </div>
-    <p>
-        Im happy that you wanted to learn more! To create a plugin, your class only have to 
-        extend <a href="#" class="label">Controll.Common.IControllPlugin</a>. And then write your code
-        in the <span class="label">Execute</span> method and bam - <strong>you're ready to go!</strong>
-    </p>
-    
-    <h2>Wow, that wasn't much at all!</h2>
-    <p>
-        Besides from copying your plugin to the folder and renaming it like 
-        <span class="label">anything.plugin.dll</span>: <strong>That's it!</strong>
-    </p>
-</section>
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap.min.css")">
+    <style>
+        body {
+            font-family: Lato;
+        }
+    </style>
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap-responsive.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/Content/css/font-awesome.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/main.css")">
 
-<section id="firewall">
-    <div class="page-header">
-        <h1>What about my router/firewall?</h1>
-    </div>
-    <p class="lead">
-        Don't worry! You don't have to fiddle and spend time with your router or your firewall to get your zombie to work!
-    </p>
-    Oh, you don't know what a <strong>zombie</strong> is? My bad! A zombie is like a client to the Controll
-    servers, but instead of telling plugins on <i>other devices</i> to run, <i>they</i> are the ones doing the actual execution!<br/>
-    And because you have the Controll servers in which everything passes through: you don't have to worry about time consuming firewalls and routers.
-</section>
+    <script src="@Url.Content("~/Content/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js")"></script>
 
-<section id="quick-start">
-    <div class="page-header">
-        <h1>Im sold! What do i have to do?</h1>
-    </div>
-    <p class="lead">
-        Wonderful! I hope you find using Controll to be an enjoying experience. Just follow these few steps:
-    </p>
-    <ol>
-        <li>Download the <a href="#">zombie</a> (11 KB)</li>
-        <li>Download a simple <a href="#">SDK</a></li>
-        <li>Write your plugin (<a href="@Url.Content("~/Documentation/#tiny-example")">Tiny Example</a>)</li>
-        <li>Compile and copy your .dll-file to the zombie folder as <span class="label">anything.plugin.dll</span></li>
-        <li><a href="@Url.Content("~/#")">Sign up</a> or <a href="#">deploy your own</a> Controll service</li>
-        <li>Start your zombie executable and enter:<br/>
-        
-            <ul>
-                <li><pre>>> register username password this-zombie-name</pre></li>
-                <li><pre>>> sync</pre></li>
+</head>
+<body>
+    <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+
+
+    <div class="container" role="application">
+        <header class="header">
+            <h1>Controll</h1>
+            <ul class="nav nav-tabs" data-bind="foreach: zombies">
+                <li><a data-toggle="tab" data-bind="text: name, attr: { href: '#zombie-' + name }"></a></li>
             </ul>
-        </li>
-    </ol>
-    <p>
-        There! Now your zombie is ready to execute your plugin from other devices!
-    </p>
-    <h2>What devices can i use?</h2>
-    <p>
-        At the moment you have to have a .NET runtime installed to use Controll. A prototype client for iOS 
-        have been created and it works (sort of). This means that you are limited to Windows or by using Mono.
-    </p>
-</section>
+        </header>
+        <div class="tab-content" data-bind="foreach: zombies">
+            <div class="tab-pane" data-bind="attr: { id: 'zombie-' + name }">
+                <div class="row no-space">
+                    <div class="span6 zombie-logs">
+                        <h2 data-bind="text: name"></h2>
+                    </div>
+                    <div class="span3" id="command-invocation">
+                        INVOKE
+                    </div>
+                    <div class="span3 activities">
+                        <ul data-bind="foreach: activities">
+                            <li class="activity">
+                                <p>
+                                    <i class="icon-cogs"></i>
+                                    <a class="activity-name"
+                                        onclick="window.controll.ui.toggleCommands(this)"
+                                        data-bind="text: Name"></a>
+                                </p>
+                                <ul style="display: none" class="activity-commands"
+                                    data-bind="foreach: Commands">
+                                    <li class="activity-command">
+                                        <p>
+                                            <i class="icon-cog"></i>
+                                            <a data-bind="text: Label"
+                                                onclick="window.controll.ui.toggleInvocation(this)"></a>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="@Url.Content("~/Content/js/vendor/jquery-1.9.1.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/vendor/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/vendor/knockout-2.2.1.debug.js")"></script>
+    <script src="@Url.Content("~/Content/js/vendor/knockout.mapping.debug.js")"></script>
+    <script src="@Url.Content("~/Content/js/main.js")"></script>
+    <script src="@Url.Content("~/Content/js/signalr/jquery.signalR-1.0.1.min.js")"></script>
+    <script src="@Url.Content("//localhost:10244/signalr/hubs")"></script>
+    <script src="@Url.Content("~/Content/js/controll/controll.utility.js")"></script>
+    <script src="@Url.Content("~/Content/js/controll/controll.vm.js")"></script>
+    <script src="@Url.Content("~/Content/js/controll/controll.ui.js")"></script>
+    <script src="@Url.Content("~/Content/js/controll/controll.js")"></script>
+
+    <script>
+        var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+        (function (d, t) {
+            var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g, s)
+        }(document, 'script'));
+        </script>
+</body>
+</html>

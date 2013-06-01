@@ -1,0 +1,76 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+@import url(http://fonts.googleapis.com/css?family=Lato);
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#zombie-container * {
+        -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+}
+
+.zombie-logs {
+    position: absolute;
+    left: 0;
+    right: 235px;
+    top: 120px;
+    background-color: rgb(221, 240, 216);
+}
+
+.header {
+  background: red;
+  height: 120px;
+}
+
+.activities {
+    background-color: aquamarine;
+    font-size: small;
+    height: 100%;
+    display: block;
+}
+
+.activities ul {
+    margin-left: 0;
+    list-style-type: none;
+}
+.activities li {
+    display: block;
+    line-height: 30px;
+}
+.activities a {
+    cursor: pointer;
+}
+
+.activity :hover, .open {
+    background-color: rgb(249, 249, 249);
+}
+
+.activity-commands {
+    background-color: #f0f0f0;
+}
+
+.activity-command :hover {
+    background-color: rgb(222, 222, 222);
+}
+
+#command-invocation {
+    display: block;
+    height: 100%;
+    background-color: rgb(222, 222, 222);
+}
+
+
+
+
+
+
+
+
+
