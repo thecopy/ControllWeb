@@ -126,7 +126,7 @@
     <script src="@Path['~/Content/js/vendor/moment.js']"></script>
     <script src="@Path['~/Content/js/vendor/linq.js']"></script>
     <script src="@Path['~/Content/js/main.js']"></script>
-    <script src="@Path['~/Content/js/signalr/jquery.signalR-1.1.1.js']"></script>
+    <script src="@Path['~/Content/js/signalr/jquery.signalR-1.1.2.js']"></script>
     <script src="@Path['~/signalr/hubs']"></script>
     <script src="@Path['~/Content/js/controll/controll.utility.js']"></script>
     <script src="@Path['~/Content/js/controll/controll.vm.js']"></script>

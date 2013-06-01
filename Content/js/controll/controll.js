@@ -94,6 +94,9 @@
         connection.hub.error(function (error) {
             console.log('SignalR error: ' + error);
         });
+        connection.hub.stateChanged(function (a) {
+            console.log('Old State: ' + a.oldState + ', New State: ' + a.newState);
+        });
         connection.hub.logging = true;
 
 

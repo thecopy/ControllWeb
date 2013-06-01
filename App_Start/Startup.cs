@@ -11,14 +11,18 @@ namespace ControllWeb
     {
         public void Configuration(IAppBuilder app)
         {
+            //app.UseTestLogger();
+
             app.UseControll(new ControllHostingConfiguration
                 {
-                    ConnectionStringAlias = "mocked",
+                    ConnectionStringAlias = "appharbor",
                     ClearDatabase = false,
                     RedirectToLoginRoute = true,
                     LoginRoute = "/login",
                     DenyAnonymous = false
                 });
+            app.MapHubs();
+
             app.UseNancy(new ControllNancyBootstrapper());
         }
     }

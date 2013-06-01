@@ -21,6 +21,8 @@
     <IISExpressUseClassicPipelineMode />
     <JSLintSkip>\Content\js\signalr\jquery.signalR-1.0.1.js|\Content\js\signalr\jquery.signalR-1.0.1.min.js|\Content\js\vendor\bootstrap.js|\Content\js\vendor\bootstrap.min.js|\Content\js\vendor\jquery-1.9.1.min.js|\Content\js\vendor\modernizr-2.6.2-respond-1.1.0.min.js|\Content\js\sammy-0.7.4.js|\Content\js\sammy-0.7.4.min.js|\Content\js\controll\controll.js|\Content\js\controll\controll.ui.js|\Content\js\controll\controll.utility.js|\Content\js\vendor\knockout-2.2.1.debug.js|\Content\js\vendor\knockout-2.2.1.js|\Content\js\controll\controll.vm.js</JSLintSkip>
     <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,11 +44,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Controll.Common">
-      <HintPath>..\..\controll\Controll.Common\bin\Debug\Controll.Common.dll</HintPath>
+    <Reference Include="Controll.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dep\Controll.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Controll.Hosting">
-      <HintPath>..\..\controll\Controll.Hosting\bin\Debug\Controll.Hosting.dll</HintPath>
+    <Reference Include="Controll.Hosting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dep\Controll.Hosting.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -59,6 +63,10 @@
     <Reference Include="Microsoft.Owin.Hosting, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Microsoft.Owin.Hosting.1.1.0-beta1-20531-354\lib\net40\Microsoft.Owin.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Mapping, Version=0.22.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Microsoft.Owin.Mapping.0.22.0-pre-20601-357\lib\net40\Microsoft.Owin.Mapping.dll</HintPath>
     </Reference>
     <Reference Include="Nancy, Version=0.17.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -175,6 +183,8 @@
     <Content Include="Content\js\vendor\linq.min.js" />
     <Content Include="Content\js\signalr\jquery.signalR-1.1.1.js" />
     <Content Include="Content\js\signalr\jquery.signalR-1.1.1.min.js" />
+    <Content Include="Content\js\signalr\jquery.signalR-1.1.2.js" />
+    <Content Include="Content\js\signalr\jquery.signalR-1.1.2.min.js" />
     <Content Include="Views\_layout.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -184,6 +194,7 @@
     <Compile Include="Infrastructure\ControllNancyBootstrapper.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Infrastructure\ClaimsPrincipalUserIdentity.cs" />
+    <Compile Include="Infrastructure\TestLogger.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -238,11 +249,9 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PostBuildEvent>
-if $(ConfigurationName) == Debug (
-xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.17.1\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.dll" "$(ProjectDir)bin\"
-xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.17.1\lib\Net40\Nancy.ViewEngines.Razor.dll" "$(ProjectDir)bin\"
-)</PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
