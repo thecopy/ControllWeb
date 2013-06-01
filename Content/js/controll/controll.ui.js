@@ -8,6 +8,30 @@
         $(this).addClass("selectedPickerValue").siblings().removeClass("selectedPickerValue");
     });
 
+
+    var showAddZombie = function(caller) {
+        var a = $(caller);
+        var form = a.next();
+
+        a.hide();
+        form.show();
+        console.log(caller);
+        console.log(form);
+        $('#addZombieName').focus();
+    };
+    
+    var addZombie = function (caller) {
+        var form = $(caller);
+        var a = form.prev();
+
+        a.show();
+        form.hide();
+
+        var zombieName = $('> input', form).val();
+        console.log("triggering event addZombie with name: " + zombieName);
+        $ui.trigger(ui.events.addZombie, zombieName);
+    };
+    
     var toggleCommands = function (caller) {
         var parent = $(caller).parent();
         parent.next().slideToggle();
@@ -76,12 +100,20 @@
         //string duplication everywhere
         events: {
             activateZombie: 'controll.ui.activateZombie',
+            addZombie: 'controll.ui.addZombie',
         },
 
         toggleCommands: toggleCommands,
         toggleInvocation: toggleInvocation,
         sendActivityInvocation: sendActivityInvocation,
         closeInvocation: closeInvocation,
+        addZombie: addZombie,
+        showAddZombie: showAddZombie,
+        
+        addZombieTab: function (vm) {
+            console.log("Add zombie tab " + name + "...");
+            controll.viewModel.zombies.push(controll.createZombie(vm));
+        },
         
         initialize: function () {
             console.log("Initializing UI...");

@@ -1,6 +1,15 @@
 ﻿(function (controll) {
     "use strict";
 
+    var createZombie = function(z) {
+        var newZombie = new controll.Zombie(
+            z.Name,
+            z.IsOnline,
+            z.Activities);
+
+        return newZombie;
+    };
+
     function convertActivitiesObjectToVm(activities) {
         var newActivities = new Array(activities.length);
         for (var i = 0; i < activities.length; i++) {
@@ -16,14 +25,15 @@
         return newActivities;
 
     }
-    
+
     var createCommand = function(c) {
         return new Command(
-                c.Name,
-                c.Label,
-                Enumerable.From(c.ParameterDescriptors).Select(function (pd) { return createParameterDescriptor(pd); }).ToArray()
-            );
-    }
+            c.Name,
+            c.Label,
+            Enumerable.From(c.ParameterDescriptors).Select(function(pd) { return createParameterDescriptor(pd); }).ToArray()
+        );
+    };
+    
     function createParameterDescriptor(pd) {
         return new ParameterDescriptor(
                 pd.Name,
@@ -139,5 +149,6 @@
 
     controll.viewModel = new ControllViewModel();
     controll.createCommand = createCommand;
+    controll.createZombie = createZombie;
     ko.applyBindings(controll.viewModel);
 }(window.controll));

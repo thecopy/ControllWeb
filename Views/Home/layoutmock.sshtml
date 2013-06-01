@@ -55,8 +55,16 @@
 
 
     <div class="header">
-        <ul class="nav nav-tabs" data-bind="foreach: zombies">
+        <ul class="nav nav-tabs">
+            <!-- ko foreach: zombies -->
             <li><a data-toggle="tab" data-bind="text: name, attr: { href: '#zombie-' + name }"></a></li>
+            <!-- /ko -->
+            <li>
+                <a data-toggle="tab" href="#" onclick="window.controll.ui.showAddZombie(this);return false;">+ Add Zombie</a>
+                <form style="display:none" onsubmit="window.controll.ui.addZombie(this);return false;">
+                    <input type="text" name="addZombieName" id="addZombieName"/>
+                </form>
+            </li>
         </ul>
     </div>
     <div class="tab-content" data-bind="foreach: { data: zombies, as: 'zombie' }" role="application">

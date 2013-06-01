@@ -7,7 +7,25 @@
     "use strict";
     var client = connection.clientHub,
                  $ui = $(ui); // convert to jQuery object for .bind
-    
+
+    $ui.bind(ui.events.addZombie, function(ev, name) {
+        console.log("[Inside controll.js] Adding zombie...");
+        try {
+            client.server.addZombie(name)
+            .done(function (zombieVm) {
+                ui.addZombieTab(zombieVm);
+            })
+            .fail(function (e) {
+                console.log('Failed to add zombie: ' + e);
+                ui.failZombieAdd(name);
+            });
+        }
+        catch (e) {
+            console.log('Failed to add zombie: ' + e);
+            ui.failMessage(id);
+        }
+    });
+
     $ui.bind(ui.events.activateZombie, function (ev, invocation) {
         console.log("Sending invocation...");
         try {
