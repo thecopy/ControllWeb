@@ -250,7 +250,7 @@
     <Content Include="Content\font\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\LocalPublish.pubxml" />
     <Content Include="Views\Home\index.cshtml" />
-    <None Include="Views\Home\layoutmock.sshtml" />
+    <Content Include="Views\Home\layoutmock.sshtml" />
     <Content Include="Views\Home\login.sshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
