@@ -20,69 +20,6 @@
             Occurs when the object is disposed.
             </summary>
         </member>
-        <member name="T:Ninject.Extensions.NamedScope.ExceptionFormatter">
-            <summary>
-            Provides meaningful exception messages.
-            </summary>
-        </member>
-        <member name="M:Ninject.Extensions.NamedScope.ExceptionFormatter.CouldNotFindScope(Ninject.Activation.IRequest,System.String)">
-            <summary>
-            Generates a message saying that the binding could not be resolved due to unknown scope
-            </summary>
-            <param name="request">The request.</param>
-            <param name="scopeName">Scope name</param>
-            <returns>The exception message.</returns>
-        </member>
-        <member name="T:Ninject.Extensions.NamedScope.NamedScope">
-            <summary>
-            A resolution root that specifies a named scope.
-            </summary>
-        </member>
-        <member name="F:Ninject.Extensions.NamedScope.NamedScope.resolutionRoot">
-            <summary>
-            The decorated resolution root.
-            </summary>
-        </member>
-        <member name="M:Ninject.Extensions.NamedScope.NamedScope.#ctor(Ninject.Syntax.IResolutionRoot)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Ninject.Extensions.NamedScope.NamedScope"/> class.
-            </summary>
-            <param name="resolutionRoot">The decorated resolution root.</param>
-        </member>
-        <member name="M:Ninject.Extensions.NamedScope.NamedScope.CanResolve(Ninject.Activation.IRequest)">
-            <summary>
-            Determines whether the specified request can be resolved.
-            </summary>
-            <param name="request">The request.</param>
-            <returns><c>True</c> if the request can be resolved; otherwise, <c>false</c>.</returns>
-        </member>
-        <member name="M:Ninject.Extensions.NamedScope.NamedScope.CanResolve(Ninject.Activation.IRequest,System.Boolean)">
-            <summary>
-            Determines whether the specified request can be resolved.
-            </summary>
-            <param name="request">The request.</param>
-            <param name="ignoreImplicitBindings">if set to <c>true</c> implicit bindings are ignored.</param>
-            <returns><c>True</c> if the request can be resolved; otherwise, <c>false</c>.</returns>
-        </member>
-        <member name="M:Ninject.Extensions.NamedScope.NamedScope.Resolve(Ninject.Activation.IRequest)">
-            <summary>
-            Resolves instances for the specified request. The instances are not actually resolved
-            until a consumer iterates over the enumerator.
-            </summary>
-            <param name="request">The request to resolve.</param>
-            <returns>An enumerator of instances that match the request.</returns>
-        </member>
-        <member name="M:Ninject.Extensions.NamedScope.NamedScope.CreateRequest(System.Type,System.Func{Ninject.Planning.Bindings.IBindingMetadata,System.Boolean},System.Collections.Generic.IEnumerable{Ninject.Parameters.IParameter},System.Boolean,System.Boolean)">
-            <summary>
-            Creates a request for the specified service.
-            </summary>
-            <param name="service">The service that is being requested.</param>
-            <param name="constraint">The constraint to apply to the bindings to determine if they match the request.</param>
-            <param name="parameters">The parameters to pass to the resolution.</param>
-            <param name="isOptional"><c>True</c> if the request is optional; otherwise, <c>false</c>.</param>
-            <param name="isUnique"><c>True</c> if the request should return a unique result; otherwise, <c>false</c>.</param>
-            <returns>The created request.</returns>
-        </member>
         <member name="T:Ninject.Extensions.NamedScope.NamedScopeActivationStrategy">
             <summary>
             Activation strategy that creates a reference from the owner to the named scopes.
@@ -140,16 +77,6 @@
             <param name="context">The context.</param>
             <param name="scopeParameterName">Name of the scope parameter.</param>
             <returns>The scope.</returns>
-            <exception cref="T:Ninject.Extensions.NamedScope.ScopeDisposedException">Thrown when the scope is already disposed.</exception>
-            <exception cref="T:Ninject.Extensions.NamedScope.UnknownScopeException">Throw if no scope with the specified name exists in the current context.</exception>
-        </member>
-        <member name="M:Ninject.Extensions.NamedScope.NamedScopeExtensionMethods.CreateNamedScope(Ninject.Syntax.IResolutionRoot,System.String)">
-            <summary>
-            Creates a named scope with the specified name.
-            </summary>
-            <param name="resolutionRoot">The resolution root.</param>
-            <param name="scopeName">The name of the scope.</param>
-            <returns>A resolution root that represents the specified scope.</returns>
         </member>
         <member name="M:Ninject.Extensions.NamedScope.NamedScopeExtensionMethods.GetNamedScopeParameter(Ninject.Activation.IContext,System.String)">
             <summary>
@@ -158,14 +85,6 @@
             <param name="context">The context.</param>
             <param name="scopeParameterName">Name of the scope parameter.</param>
             <returns>The requested parameter of null if it is not found.</returns>
-        </member>
-        <member name="M:Ninject.Extensions.NamedScope.NamedScopeExtensionMethods.GetOrAddScope(Ninject.Activation.IContext,System.String)">
-            <summary>
-            Gets the specified named scope or adds a scope with the specified name in case it does not exist yet.
-            </summary>
-            <param name="parentContext">The parent context.</param>
-            <param name="scopeParameterName">Name of the scope parameter.</param>
-            <returns>The requested scope.</returns>
         </member>
         <member name="T:Ninject.Extensions.NamedScope.NamedScopeModule">
             <summary>
@@ -264,7 +183,7 @@
             <summary>
             Initializes a new instance of the <see cref="T:Ninject.Extensions.NamedScope.UnknownScopeException"/> class.
             </summary>
-            <param name="message">The exception message.</param>
+            <param name="scopeName">Name of the scope.</param>
         </member>
     </members>
 </doc>

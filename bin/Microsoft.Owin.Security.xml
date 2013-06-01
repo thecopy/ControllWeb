@@ -227,6 +227,15 @@
             data protection when you application is not hosted by ASP.NET and all processes are running as the same domain identity. 
             </summary>
         </member>
+        <member name="M:Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new DpapiDataProtectionProvider which uses the given
+            appName as part of the protection algorithm
+            </summary>
+            <param name="appName">A user provided value needed to round-trip secured
+            data. The default value comes from the IAppBuilder.Properties["owin.AppName"] 
+            when self-hosted.</param>
+        </member>
         <member name="M:Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider.Create(System.String[])">
             <summary>
             Returns a new instance of IDataProtection for the provider.
@@ -288,6 +297,11 @@
             <summary>
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Resources.Exception_DefaultDpapiRequiresAppNameKey">
+            <summary>
+              Looks up a localized string similar to The default data protection provider may only be used when the IAppBuilder.Properties contains an appropriate &apos;host.AppName&apos; key..
             </summary>
         </member>
         <member name="P:Microsoft.Owin.Security.Resources.Exception_UnhookAuthenticationStateType">

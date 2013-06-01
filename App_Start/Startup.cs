@@ -2,6 +2,7 @@
 using Controll.Hosting.Infrastructure;
 using Controll.Hosting.Helpers;
 using ControllWeb.Infrastructure;
+using Microsoft.AspNet.SignalR;
 using Microsoft.Owin.Logging;
 using Owin;
 
@@ -19,7 +20,12 @@ namespace ControllWeb
                     ClearDatabase = false,
                     RedirectToLoginRoute = true,
                     LoginRoute = "/login",
-                    DenyAnonymous = false
+                    DenyAnonymous = false,
+                    HubConfiguration = new HubConfiguration
+                        {
+                            EnableDetailedErrors = true,
+                            EnableCrossDomain = true
+                        }
                 });
             app.MapHubs();
 

@@ -2081,7 +2081,7 @@
         </member>
         <member name="T:Ninject.Modules.AssemblyNameRetriever.AssemblyChecker">
             <summary>
-            This class is loaded into the temporary appdomain to load and check if the assemblies match the filter.
+            This class is loaded into the temporary appdomain to load and check if the asseblies match the filter.
             </summary>
         </member>
         <member name="M:Ninject.Modules.AssemblyNameRetriever.AssemblyChecker.GetAssemblyNames(System.Collections.Generic.IEnumerable{System.String},System.Predicate{System.Reflection.Assembly})">
@@ -3742,7 +3742,7 @@
         </member>
         <member name="M:Ninject.Syntax.IBindingToSyntax`1.ToConstructor``1(System.Linq.Expressions.Expression{System.Func{Ninject.Syntax.IConstructorArgumentSyntax,``0}})">
             <summary>
-            Indicates that the service should be bound to the specified constructor.
+            Indicates that the service should be bound to the speecified constructor.
             </summary>
             <typeparam name="TImplementation">The type of the implementation.</typeparam>
             <param name="newExpression">The expression that specifies the constructor.</param>
@@ -4040,37 +4040,10 @@
         </member>
         <member name="M:Ninject.Syntax.IBindingWhenSyntax`1.WhenAnyAnchestorNamed(System.String)">
             <summary>
-            Indicates that the binding should be used only when any ancestor is bound with the specified name.
+            Indicates that the binding should be used only when the service is being requested
+            by a service bound with the specified name or any of its anchestor services bound with the specified name. 
             </summary>
             <param name="name">The name to expect.</param>
-            <returns>The fluent syntax.</returns>
-        </member>
-        <member name="M:Ninject.Syntax.IBindingWhenSyntax`1.WhenAnyAncestorNamed(System.String)">
-            <summary>
-            Indicates that the binding should be used only when any ancestor is bound with the specified name.
-            </summary>
-            <param name="name">The name to expect.</param>
-            <returns>The fluent syntax.</returns>
-        </member>
-        <member name="M:Ninject.Syntax.IBindingWhenSyntax`1.WhenNoAncestorNamed(System.String)">
-            <summary>
-            Indicates that the binding should be used only when no ancestor is bound with the specified name.
-            </summary>
-            <param name="name">The name to expect.</param>
-            <returns>The fluent syntax.</returns>
-        </member>
-        <member name="M:Ninject.Syntax.IBindingWhenSyntax`1.WhenAnyAncestorMatches(System.Predicate{Ninject.Activation.IContext})">
-            <summary>
-            Indicates that the binding should be used only when any ancestor matches the specified predicate.
-            </summary>
-            <param name="predicate">The predicate to match.</param>
-            <returns>The fluent syntax.</returns>
-        </member>
-        <member name="M:Ninject.Syntax.IBindingWhenSyntax`1.WhenNoAncestorMatches(System.Predicate{Ninject.Activation.IContext})">
-            <summary>
-            Indicates that the binding should be used only when no ancestor matches the specified predicate.
-            </summary>
-            <param name="predicate">The predicate to match.</param>
             <returns>The fluent syntax.</returns>
         </member>
         <member name="T:Ninject.Syntax.IBindingInSyntax`1">
@@ -4386,37 +4359,10 @@
         </member>
         <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WhenAnyAnchestorNamed(System.String)">
             <summary>
-            Indicates that the binding should be used only when any ancestor is bound with the specified name.
+            Indicates that the binding should be used only when the service is being requested
+            by a service bound with the specified name or any of its anchestor services bound with the specified name. 
             </summary>
             <param name="name">The name to expect.</param>
-            <returns>The fluent syntax.</returns>
-        </member>
-        <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WhenAnyAncestorNamed(System.String)">
-            <summary>
-            Indicates that the binding should be used only when any ancestor is bound with the specified name.
-            </summary>
-            <param name="name">The name to expect.</param>
-            <returns>The fluent syntax.</returns>
-        </member>
-        <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WhenNoAncestorNamed(System.String)">
-            <summary>
-            Indicates that the binding should be used only when no ancestor is bound with the specified name.
-            </summary>
-            <param name="name">The name to expect.</param>
-            <returns>The fluent syntax.</returns>
-        </member>
-        <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WhenAnyAncestorMatches(System.Predicate{Ninject.Activation.IContext})">
-            <summary>
-            Indicates that the binding should be used only when any ancestor matches the specified predicate.
-            </summary>
-            <param name="predicate">The predicate to match.</param>
-            <returns>The fluent syntax.</returns>
-        </member>
-        <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.WhenNoAncestorMatches(System.Predicate{Ninject.Activation.IContext})">
-            <summary>
-            Indicates that the binding should be used only when no ancestor matches the specified predicate.
-            </summary>
-            <param name="predicate">The predicate to match.</param>
             <returns>The fluent syntax.</returns>
         </member>
         <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.Named(System.String)">
@@ -5306,15 +5252,6 @@
             <summary>
             Checkes whether a binding exists for a given target.
             </summary>
-            <param name="context">The context.</param>
-            <param name="target">The target.</param>
-            <returns>Whether a binding exists for the target in the given context.</returns>
-        </member>
-        <member name="M:Ninject.Selection.Heuristics.StandardConstructorScorer.BindingExists(Ninject.IKernel,Ninject.Activation.IContext,Ninject.Planning.Targets.ITarget)">
-            <summary>
-            Checkes whether a binding exists for a given target on the specified kernel.
-            </summary>
-            <param name="kernel">The kernel.</param>
             <param name="context">The context.</param>
             <param name="target">The target.</param>
             <returns>Whether a binding exists for the target in the given context.</returns>
