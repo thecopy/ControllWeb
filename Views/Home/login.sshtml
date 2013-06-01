@@ -1,7 +1,70 @@
-﻿<form method="POST" action="@Path['~/auth']">
+﻿<head>
+    <title>Controll 0.0.4</title>
+    <script src="@Path['~/Content/js/vendor/jquery-1.9.1.min.js']"></script>
+</head>
+<body>
+<h1>Controll 0.0.4</h1>
+<h2>Login</h2>
+<form id="login" method="POST" action="@Path['~/auth']">
 	Username:<br/>
 	<input type="text" name="username" value="username"/><br/>
 	Password:<br/>
 	<input type="text" name="password" value="password"/><br/>
 	<input type="submit"/>
 </form>
+
+
+<h2>Or Sign Up</h2>
+<form id="signup" method="POST" action="@Path['~/registeruser']">
+	Username:<br/>
+	<input type="text" name="username" value="username"/><br/>
+	Password:<br/>
+	<input type="text" name="password" value="password"/><br/>
+	Email (type anything, e.g. asdasd or hello123, just needs to be unique, i.e. it isnt used ANYWHERE other that stored in db at the moment):<br/>
+	<input type="text" name="email" value="email123"/><br/>
+	<input type="submit"/>
+</form>
+
+<script type="text/javascript">
+    $('#login').submit(function () {
+        console.log("Loging in...");
+        var data = $("#login").serialize();
+        $.ajax({
+            type: "POST",
+            url: "@Path['~/auth']",
+            data: data, // serializes the form's elements.
+            success: function (data, textStatus, jqXHR) {
+                if (jqXHR.status == 204)
+                    window.location.href = "@Path['~/mock']";
+                else
+                    console.log('Expected status 204. Got ' + jqXHR.status);
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('Error: ' + errorThrown);
+            }
+        });
+
+        return false;
+    });
+
+    $('#signup').submit(function () {
+        console.log("Signing up...");
+        var data = $("#signup").serialize();
+        $.ajax({
+            type: "POST",
+            url: "@Path['~/registeruser']",
+            data: data, // serializes the form's elements.
+            success: function (data, textStatus, jqXHR) {
+                if (jqXHR.status == 204)
+                    alert('Sign Up Successfull! Login above!');
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                alert('Error: ' + errorThrown);
+            }
+        });
+
+        return false;
+    });
+</script>
+    </body>

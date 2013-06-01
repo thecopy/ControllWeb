@@ -12,20 +12,10 @@ namespace ControllWeb
     {
         public HomeModule()
         {
-            Get["/"] = parameters =>
-                {
-                    var user = Context.CurrentUser as ClaimsPrincipalUserIdentity;
-                    if (user != null &&
-                        user.ClaimsPrincipal != null && 
-                        user.ClaimsPrincipal.HasClaim(ControllClaimTypes.UserIdentifier))
-
-                        return View["layoutmock"];
-
-                    return View["login"];
-                };
+            Get["/"] = parameters => View["login"];
+            Get["/login"] = _ => View["login"];
 
             Get["/mock"] = parameters => View["layoutmock"];
-            Get["/login"] = _ => View["login"];
         }
     }
 }

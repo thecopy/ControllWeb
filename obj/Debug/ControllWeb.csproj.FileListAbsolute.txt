@@ -41,3 +41,5 @@ C:\Dev\Repos\ControllWeb\ControllWeb\obj\Debug\ControllWeb.pdb
 C:\Dev\Repos\ControllWeb\ControllWeb\bin\Owin.Extensions.dll
 C:\Dev\Repos\ControllWeb\ControllWeb\bin\Owin.Types.dll
 C:\Dev\Repos\ControllWeb\ControllWeb\bin\Owin.Extensions.xml
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Newtonsoft.Json.dll
+C:\Dev\Repos\ControllWeb\ControllWeb\bin\Newtonsoft.Json.xml
