@@ -218,8 +218,6 @@
     <Content Include="Content\js\vendor\modernizr-2.6.2-respond-1.1.0.min.js" />
     <Content Include="Content\js\sammy-0.7.4.js" />
     <Content Include="Content\js\sammy-0.7.4.min.js" />
-    <Content Include="Content\js\signalr\jquery.signalR-1.0.1.js" />
-    <Content Include="Content\js\signalr\jquery.signalR-1.0.1.min.js" />
     <Content Include="Content\js\vendor\knockout-2.2.1.debug.js" />
     <Content Include="Content\js\vendor\knockout-2.2.1.js" />
     <Content Include="Content\js\vendor\moment.js" />
