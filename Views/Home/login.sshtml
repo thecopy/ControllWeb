@@ -3,7 +3,7 @@
     <script src="@Path['~/Content/js/vendor/jquery-1.9.1.min.js']"></script>
 </head>
 <body>
-<h1>Controll 0.0.4</h1>
+<h1>Controll 0.1.0.0</h1>
 <h2>Login</h2>
 <form id="login" method="POST" action="@Path['~/auth']">
 	Username:<br/>
