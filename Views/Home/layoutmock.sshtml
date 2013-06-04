@@ -94,7 +94,7 @@
                     </li>
                 </ul>
             <div style="position: absolute; top:auto; bottom: 13px; left: 10px;" >
-                <input type="file" class="btn">Upload Activity</input>
+                <inpit type= class="btn">Upload Activity</inpit>
             </div>
             </div>
             <div class="activities">
