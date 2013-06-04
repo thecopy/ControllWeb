@@ -93,6 +93,9 @@
                         <div class="right" data-bind="text: time"></div>
                     </li>
                 </ul>
+            <div style="position: absolute; top:auto; bottom: 13px; left: 10px;" >
+                <input type="file" class="btn">Upload Activity</input>
+            </div>
             </div>
             <div class="activities">
                 <ul data-bind="foreach: { data: activities, as: 'activity' }">

@@ -70,7 +70,7 @@
 
             ui.initialize();
             
-            connection.hub.start({ transport: 'longPolling' })
+            connection.hub.start(/*{ transport: 'longPolling' }*/)
                 .done(function () {
                     client.server.signIn()
                     .fail(function (e) {
